@@ -186,7 +186,7 @@ inanimate_nouns = [
   'wished', 'dreamed', 'expected', 'imagined', 'meant'
 ] %}
  
-{# VerbNet want-32.1, VerbNet try-61, VerbNet wish-62, VerbNet long-32.2, VerbNet admire-31.2-1 %}
+{# VerbNet want-32.1, VerbNet try-61, VerbNet wish-62, VerbNet long-32.2, VerbNet admire-31.2-1 #}
 {% set V_inf_taking = [
   'wanted', 'preferred', 'needed', 'intended', 'tried',
   'attempted', 'planned', 'expected', 'hoped', 'wished', 
@@ -197,7 +197,7 @@ inanimate_nouns = [
 
 
 
-{# 1.1.2.1 Causative-Inchoative Alternation %}
+{# 1.1.2.1 Causative-Inchoative Alternation #}
 {% set V_unacc = [
   'rolled', 'froze', 'burned', 'shortened', 'floated', 
   'grew', 'slid', 'broke', 'crumpled', 'split', 
@@ -223,7 +223,8 @@ inanimate_nouns = [
 
 
 
-{# 10 DO omissible transitives, 10 unergatives %}
+{# 10 DO omissible transitives, 10 unergatives #}
+
 {% set V_inf = [
   'walk', 'run', 'sleep', 'sneeze', 'nap',
   'eat', 'read', 'cook', 'hunt', 'paint',
