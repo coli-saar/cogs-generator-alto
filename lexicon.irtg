@@ -1,4 +1,28 @@
 
+
+{# This is Alexander's toy lexicon for generating his example sentence.
+   It can be deleted once the full grammar has been converted.
+ #}
+
+{% for word, cat in [
+    ('the', 'Det'), 
+    ('box', 'N_common_inanimate_nsubjpass'),
+    ('was', 'AUX'),
+    ('known', 'V_trans_omissible_pp')
+    ]%}
+{{ cat }} -> r{{ cnt.next() }}
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}
+
+
+
+
+
+{# Below is Najoung's lexicon for the original COGS grammar. #}
+
+
+
 {# 100 nouns, picked from the MacArthur Communicative Development Inventory and the BNC top frequent nouns
    BNC freq rank: http://ucrel.lancs.ac.uk/bncfreq/flists.html
    #}
@@ -278,21 +302,4 @@ inanimate_nouns = [
 
 
 
-
-
-
-{# This is Alexander's toy lexicon for generating his example sentence.
-   It can be deleted once the full grammar has been converted.
- #}
-
-{% for word, cat in [
-    ('the', 'Det'), 
-    ('box', 'N_common_inanimate_nsubjpass'),
-    ('was', 'AUX'),
-    ('known', 'V_trans_omissible_pp')
-    ]%}
-{{ cat }} -> r{{ cnt.next() }}
-[english] {{ word }}
-[semantics] {{ word }}
-{% endfor %}
 
