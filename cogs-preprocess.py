@@ -1,7 +1,7 @@
 from jinja2 import *
 import numpy as np
 from scipy.stats import zipf
-
+import sys
 
 ## Counter object for numbering the rules
 class _Counter(object):
@@ -20,6 +20,8 @@ class _Counter(object):
 
 ## Assign Zipfian distribution to vocab
 def normalize(probs):
+    ### AK: Why is this not simply probs/sum(probs)?
+    ### The code below does not maintain the ratios between the different probabilities.
     leftover_prob = 1-sum(probs)
     probs = probs + leftover_prob/len(probs)
     return probs
@@ -38,7 +40,7 @@ env = Environment(loader=FileSystemLoader("."))
 env.globals['counter'] = _Counter
 env.filters['zipf'] = generate_vocab_probabilities
 
-template = env.get_template("main.irtg")
+template = env.get_template(sys.argv[1])
 print(template.render())
 
 
