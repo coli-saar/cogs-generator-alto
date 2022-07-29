@@ -1,0 +1,39 @@
+
+{# 100 nouns, picked from the MacArthur Communicative Development Inventory and the BNC top frequent nouns
+   BNC freq rank: http://ucrel.lancs.ac.uk/bncfreq/flists.html
+   #}
+{% set 
+animate_nouns = [
+    'girl', 'boy', 'cat', 'dog', 'baby', 'child', 'teacher', 'frog', 'chicken', 'mouse',
+    'lion', 'monkey', 'bear', 'giraffe', 'horse', 'bird', 'duck', 'bunny', 'butterfly', 'penguin',
+    'student', 'professor', 'monster', 'hero', 'sailor', 'lawyer', 'customer', 'scientist', 'princess', 'president',
+    'cow', 'crocodile', 'goose', 'hen', 'deer', 'donkey', 'bee', 'fly', 'kitty', 'tiger',
+    'wolf', 'zebra', 'mother', 'father', 'patient', 'manager', 'director', 'king', 'queen', 'kid',
+    'fish', 'moose',  'pig', 'pony', 'puppy', 'sheep', 'squirrel', 'lamb', 'turkey', 'turtle', 
+    'doctor', 'pupil', 'prince', 'driver', 'consumer', 'writer', 'farmer', 'friend', 'judge', 'visitor',
+    'guest', 'servant', 'chief', 'citizen', 'champion', 'prisoner', 'captain', 'soldier', 'passenger', 'tenant',
+    'politician', 'resident', 'buyer', 'spokesman', 'governor', 'guard', 'creature', 'coach', 'producer', 'researcher',
+    'guy', 'dealer', 'duke', 'tourist', 'landlord', 'human', 'host', 'priest', 'journalist', 'poet'
+] %}
+
+{% for word in animate_nouns -%}
+{% for cat in ['N_common_animate_dobj', 'N_common_animate_iobj', 'N_common_animate_nsubj', 'N_common_animate_nsubjpass'] -%}
+{{ cat }} -> r{{ cnt.next() }}
+[english] {{ word }}
+[semantics] {{ word }}
+
+{% endfor %}{% endfor %}
+
+
+
+{% for word, cat in [
+    ('the', 'Det'), 
+    ('box', 'N_common_inanimate_nsubjpass'),
+    ('was', 'AUX'),
+    ('known', 'V_trans_omissible_pp')
+    ]%}
+{{ cat }} -> r{{ cnt.next() }}
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}
+
