@@ -1,0 +1,13 @@
+
+NP_inanimate_nsubjpass -> r{{ cnt.next() }}(Det, N_common_inanimate_nsubjpass)
+[english] *(?1, ?2)
+[semantics] det(?2, ?1)
+
+VP_passive -> r{{ cnt.next() }}(AUX, V_trans_omissible_pp)
+[english] *(?1, ?2)
+[semantics] auxpass(?2, ?1)
+
+S! -> r{{ cnt.next() }}(NP_inanimate_nsubjpass, VP_passive)
+[english] *(?1, ?2)
+[semantics] nsubjpass(?2, ?1)
+
