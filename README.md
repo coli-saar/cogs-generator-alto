@@ -2,11 +2,13 @@
 
 This repository is intended to be an [Alto](https://github.com/coli-saar/alto)-based reimplementation of the original COGS grammar.
 
-It contains a bunch of [Jinja](https://palletsprojects.com/p/jinja/) templates from which [IRTG](https://github.com/coli-saar/alto/wiki/GettingStarted) grammars can be produced. You will need to run [preprocess.py](https://github.com/coli-saar/alto/blob/master/scripts/grammar-preprocessor/preprocess.py) from the Alto repository to expand the templates to produce actual IRTGs:
+It contains a bunch of [Jinja](https://palletsprojects.com/p/jinja/) templates from which [IRTG](https://github.com/coli-saar/alto/wiki/GettingStarted) grammars can be produced. You will need to run `cogs-preprocess.py` to expand the templates to produce actual IRTGs:
 
 ```
-$ python preprocess.py main.irtg > preprocessed-main.irtg
+$ python cogs-preprocess.py main.irtg > preprocessed-main.irtg
 ```
+
+Note: cogs-preprocess.py is a variant of [preprocess.py](https://github.com/coli-saar/alto/blob/master/scripts/grammar-preprocessor/preprocess.py) from the Alto repository which adds COGS-specific functionality, such as computing vocabulary probabilities.
 
 You can then load `preprocessed-main.irtg` into Alto.
 

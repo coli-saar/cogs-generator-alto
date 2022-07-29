@@ -40,9 +40,11 @@ animate_nouns = [
     'guy', 'dealer', 'duke', 'tourist', 'landlord', 'human', 'host', 'priest', 'journalist', 'poet'
 ] %}
 
-{% for word in animate_nouns -%}
+
+
+{% for word, prob in animate_nouns|zipf -%}
 {% for cat in ['N_common_animate_dobj', 'N_common_animate_iobj', 'N_common_animate_nsubj', 'N_common_animate_nsubjpass'] -%}
-{{ cat }} -> r{{ cnt.next() }}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ word }}
 

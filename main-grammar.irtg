@@ -1,4 +1,17 @@
 
+
+{# From Najoung's grammar #}
+
+{#
+S! -> r{{ cnt.next() }}(NP_animate_nsubj VP_external) [0.49]
+[english] *(?1, ?2)
+[semantics] 
+#}
+
+
+
+{# Alexander's toy grammar fragment - delete this at the end #}
+
 NP_inanimate_nsubjpass -> r{{ cnt.next() }}(Det, N_common_inanimate_nsubjpass)
 [english] *(?1, ?2)
 [semantics] det(?2, ?1)
