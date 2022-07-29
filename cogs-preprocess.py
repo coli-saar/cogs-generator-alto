@@ -15,8 +15,7 @@ class _Counter(object):
     v=self.value
     self.value+=1
     return v
-
-
+    
 
 ## Assign Zipfian distribution to vocab
 def normalize(probs):
@@ -32,6 +31,9 @@ def generate_vocab_probabilities(words):
     probs = zipf.pmf(np.array(range(1,len(words)+1)), a)
     probs = normalize(probs)
     return zip(words, probs)
+
+
+
 
 
 
