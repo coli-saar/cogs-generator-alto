@@ -13,7 +13,7 @@ S! -> r{{ cnt.next() }}(VP_internal) [0.06]
 [english] ?1
 [semantics] ?1
 
-S! -> r{{ cnt.next() }}(NP_inanimate_nsubjpassm, VP_passive) [0.375]
+S! -> r{{ cnt.next() }}(NP_inanimate_nsubjpass, VP_passive) [0.375]
 [english] *(?1, ?2)
 [semantics] nsubjpass(?2, ?1)
 
