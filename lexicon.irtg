@@ -95,7 +95,7 @@ C -> r{{ cnt.next() }} [1]
 
 BY -> r{{ cnt.next() }} [1]
 [english] by
-[semantics] BY
+[semantics] by
 
 
 

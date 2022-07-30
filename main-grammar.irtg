@@ -7,7 +7,7 @@
 
 S! -> r{{ cnt.next() }}(NP_animate_nsubj, VP_external) [0.49]
 [english] *(?1, ?2)
-[semantics] nsubj(?2, ?1)
+[semantics] pre_nsubj(?2, ?1)
 
 S! -> r{{ cnt.next() }}(VP_internal) [0.06]
 [english] ?1
@@ -15,11 +15,11 @@ S! -> r{{ cnt.next() }}(VP_internal) [0.06]
 
 S! -> r{{ cnt.next() }}(NP_inanimate_nsubjpass, VP_passive) [0.375]
 [english] *(?1, ?2)
-[semantics] nsubjpass(?2, ?1)
+[semantics] pre_nsubjpass(?2, ?1)
 
 S! -> r{{ cnt.next() }}(NP_animate_nsubjpass, VP_passive_dat) [0.075]
 [english] *(?1, ?2)
-[semantics] nsubjpass(?2, ?1)
+[semantics] pre_nsubjpass(?2, ?1)
 
 VP_external -> r{{ cnt.next() }}(V_unerg) [0.10525]
 [english] ?1
@@ -64,7 +64,7 @@ NP_unacc_subj -> r{{ cnt.next() }}(NP_animate_dobj_noPP) [0.5]
 
 NP_animate_dobj_noPP -> r{{ cnt.next() }}(Det, N_common_animate_dobj) [0.5]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 NP_animate_dobj_noPP -> r{{ cnt.next() }}(N_prop_dobj) [0.5]
 [english] ?1
@@ -74,11 +74,11 @@ NP_animate_dobj_noPP -> r{{ cnt.next() }}(N_prop_dobj) [0.5]
 
 NP_animate_dobj -> r{{ cnt.next() }}(Det, N_common_animate_dobj) [0.25]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 NP_animate_dobj -> r{{ cnt.next() }}(Det, N_common_animate_dobj, PP_loc) [0.25]
 [english] *(*(?1, ?2), ?3)
-[semantics] nmod(det(?2, ?1), ?3)
+[semantics] nmod(pre_det(?2, ?1), ?3)
 
 NP_animate_dobj -> r{{ cnt.next() }}(N_prop_dobj) [0.50]
 [english] ?1
@@ -86,7 +86,7 @@ NP_animate_dobj -> r{{ cnt.next() }}(N_prop_dobj) [0.50]
 
 NP_animate_iobj -> r{{ cnt.next() }}(Det, N_common_animate_iobj) [0.5]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 NP_animate_iobj -> r{{ cnt.next() }}(N_prop_iobj) [0.5]
 [english] ?1
@@ -96,7 +96,7 @@ NP_animate_iobj -> r{{ cnt.next() }}(N_prop_iobj) [0.5]
 
 NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
 [english] ?1
@@ -105,7 +105,7 @@ NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
 
 NP_animate_nsubjpass -> r{{ cnt.next() }}(Det, N_common_animate_nsubjpass) [0.5]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 NP_animate_nsubjpass -> r{{ cnt.next() }}(N_prop_nsubjpass) [0.5]
 [english] ?1
@@ -114,45 +114,45 @@ NP_animate_nsubjpass -> r{{ cnt.next() }}(N_prop_nsubjpass) [0.5]
 
 NP_inanimate_dobj -> r{{ cnt.next() }}(Det, N_common_inanimate_dobj) [0.5]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 NP_inanimate_dobj -> r{{ cnt.next() }}(Det, N_common_inanimate_dobj, PP_loc) [0.5]
 [english] *(*(?1, ?2), ?3)
-[semantics] nmod(det(?2, ?1), ?3)
+[semantics] nmod(pre_det(?2, ?1), ?3)
 
 NP_inanimate_dobj_noPP -> r{{ cnt.next() }}(Det, N_common_inanimate_dobj) [1.0]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 NP_inanimate_nsubjpass -> r{{ cnt.next() }}(Det, N_common_inanimate_nsubjpass) [1.0]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 
 NP_on -> r{{ cnt.next() }}(Det, N_on, PP_loc) [0.1]
 [english] *(*(?1, ?2), ?3)
-[semantics] nmod(det(?2, ?1), ?3)
+[semantics] nmod(pre_det(?2, ?1), ?3)
 
 NP_on -> r{{ cnt.next() }}(Det, N_on) [0.9]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 
 NP_in -> r{{ cnt.next() }}(Det, N_in, PP_loc) [0.1]
 [english] *(*(?1, ?2), ?3)
-[semantics] nmod(det(?2, ?1), ?3)
+[semantics] nmod(pre_det(?2, ?1), ?3)
 
 NP_in -> r{{ cnt.next() }}(Det, N_in) [0.9]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 NP_beside -> r{{ cnt.next() }}(Det, N_beside, PP_loc) [0.1]
 [english] *(*(?1, ?2), ?3)
-[semantics] nmod(det(?2, ?1), ?3)
+[semantics] nmod(pre_det(?2, ?1), ?3)
 
  NP_beside -> r{{ cnt.next() }}(Det, N_beside) [0.9]
 [english] *(?1, ?2)
-[semantics] det(?2, ?1)
+[semantics] pre_det(?2, ?1)
 
 
 
