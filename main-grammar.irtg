@@ -155,6 +155,8 @@ NP_beside -> r{{ cnt.next() }}(Det, N_beside) [0.9]
 [semantics] pre_det(?2, ?1)
 
 
+{## Prepositional Phrases ##}
+
 PP_loc -> r{{ cnt.next() }}(P_on, NP_on) [0.333]
 [english] *(?1, ?2)
 [semantics] pre_case(?2, ?1)
