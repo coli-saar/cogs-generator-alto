@@ -73,8 +73,6 @@
 } %}
 
 
-
-
 {# closed-class words #}
 
 Det -> r{{ cnt.next() }} [0.5]
@@ -98,7 +96,6 @@ BY -> r{{ cnt.next() }} [1]
 [semantics] by
 
 
-
 {# 100 nouns, picked from the MacArthur Communicative Development Inventory and the BNC top frequent nouns
    BNC freq rank: http://ucrel.lancs.ac.uk/bncfreq/flists.html
    #}
@@ -116,15 +113,13 @@ animate_nouns = [
     'guy', 'dealer', 'duke', 'tourist', 'landlord', 'human', 'host', 'priest', 'journalist', 'poet'
 ] %}
 
-
-
 {% for word, prob in animate_nouns|zipf -%}
 {% for cat in ['N_common_animate_dobj', 'N_common_animate_iobj', 'N_common_animate_nsubj', 'N_common_animate_nsubjpass'] -%}
 {{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ word }}
-
 {% endfor %}{% endfor %}
+
 
 {% set 
 inanimate_nouns = [
@@ -145,11 +140,7 @@ inanimate_nouns = [
 {{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ word }}
-
 {% endfor %}{% endfor %}
-
-
-
 
 
 {# 100 names, picked from https://www.ssa.gov/OACT/babynames/ #}
@@ -166,14 +157,15 @@ inanimate_nouns = [
     'Audrey', 'Ryan', 'Brooklyn', 'Asher', 'Bella', 'Nathan', 'Claire', 'Thomas', 'Skylar', 'Leo'
 ]%}
 
-{# TODO - add rules #}
-
-
-
+{% for word, prob in proper_nouns|zipf -%}
+{% for cat in ['N_prop_dobj', 'N_prop_iobj', 'N_prop_nsubj', 'N_prop_nsubjpass'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}{% endfor %}
 
 
 {# P + N: N from BNC + COCA #}
-
 {# 100 nouns that can appear with "on" #}
 {% set on_nouns = [
     'table', 'stage', 'bed', 'chair', 'stool', 'road', 'tree', 'box', 'surface', 'seat',
@@ -187,6 +179,12 @@ inanimate_nouns = [
     'carpet', 'plaque', 'boulder', 'leaf', 'mound', 'bun', 'dish', 'cat', 'podium', 'tabletop',
     'beach', 'bag', 'glacier', 'brick', 'crack', 'vessel', 'futon', 'turntable', 'rag', 'chessboard'
 ] %}
+
+{% for word, prob in on_nouns|zipf -%}
+N_on -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}
 
 {# 100 nouns that can appear with "in" #}
 {% set in_nouns = [
@@ -202,6 +200,12 @@ inanimate_nouns = [
     'jeep', 'shoebox', 'wagon', 'bakery', 'fishbowl', 'kennel', 'china', 'spaceship', 'penthouse', 'pyramid'
 ] %}
 
+{% for word, prob in in_nouns|zipf -%}
+N_in -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}
+
 {# 100 nouns that can appear with "beside" #}
 {% set beside_nouns = [
     'table', 'stage', 'bed', 'chair', 'book', 'road', 'tree', 'machine', 'house', 'seat',
@@ -216,8 +220,33 @@ inanimate_nouns = [
     'bicycle', 'keyboard', 'stool', 'pepper', 'warrior', 'pillar', 'monkey', 'cassette', 'broker', 'bin'
 ] %}
 
+{% for word, prob in beside_nouns|zipf -%}
+N_beside -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}
 
 
+{# Prepositions #}
+
+P_on -> r{{ cnt.next() }} [1]
+[english] on
+[semantics] on
+
+P_in -> r{{ cnt.next() }} [1]
+[english] in
+[semantics] in
+
+P_beside -> r{{ cnt.next() }} [1]
+[english] beside
+[semantics] beside
+
+P_iobj -> r{{ cnt.next() }} [1]
+[english] to
+[semantics] to
+
+
+{# TODO - add rules #}
 
 
 
