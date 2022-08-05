@@ -141,7 +141,7 @@ inanimate_nouns = [
 ] %}
 
 {% for word, prob in inanimate_nouns|zipf -%}
-{% for cat in ['N_common_inanimate_dobj', 'N_common_inanimate_iobj', 'N_common_inanimate_nsubj', 'N_common_inanimate_nsubjpass'] -%}
+{% for cat in ['N_common_inanimate_dobj', 'N_common_inanimate_nsubjpass'] -%}
 {{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ word }}
