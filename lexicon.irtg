@@ -343,6 +343,12 @@ P_iobj -> r{{ cnt.next() }} [1]
   'changed', 'snapped', 'disintegrated', 'collapsed', 'decomposed',
   'doubled', 'improved', 'inflated', 'enlarged', 'reddened', 
 ] %}
+{% for word, prob in V_unacc|zipf -%}
+{% for cat in ['V_unacc'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
 
 {% set V_unacc_pp = [
   'rolled', 'frozen', 'burned', 'shortened', 'floated',
