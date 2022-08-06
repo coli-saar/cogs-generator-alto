@@ -95,6 +95,10 @@ BY -> r{{ cnt.next() }} [1]
 [english] by
 [semantics] by
 
+INF -> r{{ cnt.next() }} [1]
+[english] to
+[semantics] to
+
 
 {# 100 nouns, picked from the MacArthur Communicative Development Inventory and the BNC top frequent nouns
    BNC freq rank: http://ucrel.lancs.ac.uk/bncfreq/flists.html
@@ -317,7 +321,13 @@ P_iobj -> r{{ cnt.next() }} [1]
   'dreamed', 'meant', 'longed', 'yearned', 'itched'
 ] %}
 
+{% for word, prob in V_inf_taking|zipf -%}
+{% for cat in ['V_inf_taking'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
 
+{% endfor %}{% endfor %}
 
 
 {# 1.1.2.1 Causative-Inchoative Alternation #}
@@ -354,6 +364,13 @@ P_iobj -> r{{ cnt.next() }} [1]
   'talk', 'dance', 'giggle', 'jog', 'smirk',
   'call', 'sketch', 'dust', 'clean', 'investigate'
 ] %}
+{% for word, prob in V_inf|zipf -%}
+{% for cat in ['V_inf'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+
+{% endfor %}{% endfor %}
 
 {% set V_dat = [
   'gave', 'lended', 'sold', 'offered', 'fed',
