@@ -53,6 +53,10 @@ VP_external -> r{{ cnt.next() }}(V_dat, NP_animate_iobj, NP_inanimate_dobj) [0.1
 [english] *(*(?1, ?2), ?3)
 [semantics] theme(recipient(?1, ?2), ?3)
 
+VP_external -> r{{ cnt.next() }}(V_cp_taking, C, S!) [0.158]
+[english] *(?1, *(?2, ?3))
+[semantics] ccomp(?1, ?3)
+
 
 {## Noun phrases ##}
 
@@ -186,10 +190,6 @@ PP_loc -> r{{ cnt.next() }}(P_beside, NP_beside) [0.333]
 
 ## Leftover grammar rules that I haven't converted yet
 
-
-VP_external ->
-             | V_cp_taking C S [0.158] \
-             | V_dat NP_inanimate_dobj PP_iobj [0.10525] | V_dat NP_animate_iobj NP_inanimate_dobj [0.10525]
 VP_internal -> NP_unacc_subj V_unacc [1.0]
 VP_passive -> AUX V_trans_not_omissible_pp [0.125] | AUX V_trans_not_omissible_pp BY NP_animate_nsubj [0.125] |  \
               AUX V_trans_omissible_pp [0.125] | AUX V_trans_omissible_pp BY NP_animate_nsubj [0.125] |  \

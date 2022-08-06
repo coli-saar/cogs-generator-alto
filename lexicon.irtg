@@ -312,6 +312,12 @@ P_iobj -> r{{ cnt.next() }} [1]
   'appreciated', 'respected', 'supported', 'tolerated', 'valued',
   'wished', 'dreamed', 'expected', 'imagined', 'meant'
 ] %}
+{% for word, prob in V_cp_taking|zipf -%}
+{% for cat in ['V_cp_taking'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
  
 {# VerbNet want-32.1, VerbNet try-61, VerbNet wish-62, VerbNet long-32.2, VerbNet admire-31.2-1 #}
 {% set V_inf_taking = [
