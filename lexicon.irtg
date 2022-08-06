@@ -378,6 +378,12 @@ P_iobj -> r{{ cnt.next() }} [1]
   'brought', 'handed', 'forwarded', 'promised', 'mailed',
   'loaned', 'posted', 'returned', 'slipped', 'wired'
 ] %}
+{% for word, prob in V_dat|zipf -%}
+{% for cat in ['V_dat'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}{% endfor %}
 
 {% set V_dat_pp = [
   'given', 'lended', 'sold', 'offered', 'fed', 
