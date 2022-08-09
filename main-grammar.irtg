@@ -189,10 +189,6 @@ PP_loc -> r{{ cnt.next() }}(P_beside, NP_beside) [0.333]
 [english] *(?1, ?2)
 [semantics] pre_case(?2, ?1)
 
-BY_mod -> r{{ cnt.next() }}(BY,NP_animate_nsubj) [1]
-[english] *(?1, ?2)
-[semantics] pre_case(?2, ?1)
-
 PP_iobj -> r{{ cnt.next() }} (P_iobj,NP_animate_iobj)[1]
 [english] *(?1, ?2)
 [semantics] pre_case(?2, ?1)
@@ -213,41 +209,41 @@ VP_passive -> r{{ cnt.next() }}(AUX,V_trans_not_omissible_pp) [0.125]
 [english] *(?1, ?2)
 [semantics] pre_auxpass(?2, ?1)
 
-VP_passive -> r{{ cnt.next() }}(AUX,V_trans_not_omissible_pp, BY_mod) [0.125]
-[english] *(*(?1, ?2),?3)
-[semantics] agent(pre_auxpass(?2, ?1),?3))
+VP_passive -> r{{ cnt.next() }}(AUX,V_trans_not_omissible_pp, BY,NP_animate_nsubj) [0.125]
+[english] *(*(?1, ?2),*(?3,?4))
+[semantics] agent(?2,?4)
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_trans_omissible_pp) [0.125]
 [english] *(?1, ?2)
 [semantics] pre_auxpass(?2, ?1)
 
-VP_passive -> r{{ cnt.next() }}(AUX, V_trans_omissible_pp, BY_mod) [0.125]
-[english] *(*(?1, ?2),?3)
-[semantics] agent(pre_auxpass(?2, ?1),?3))
+VP_passive -> r{{ cnt.next() }}(AUX, V_trans_omissible_pp, BY,NP_animate_nsubj) [0.125]
+[english] *(*(?1, ?2),*(?3,?4))
+[semantics] agent(?2,?4))
 
 VP_passive -> r{{ cnt.next() }}(AUX,V_unacc_pp) [0.125]
 [english] *(?1, ?2)
 [semantics] pre_auxpass(?2, ?1)
 
-VP_passive -> r{{ cnt.next() }}(AUX, V_unacc_pp, BY_mod) [0.125]
-[english] *(*(?1, ?2),?3)
-[semantics] agent(pre_auxpass(?2, ?1),?3))
+VP_passive -> r{{ cnt.next() }}(AUX, V_unacc_pp, BY,NP_animate_nsubj) [0.125]
+[english] *(*(?1, ?2),*(?3,?4))
+[semantics] agent(?2,?4))
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj) [0.125]
 [english] *(*(?1, ?2),?3)
 [semantics] recipient(pre_auxpass(?2, ?1),?3)
 
-VP_passive -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj, BY_mod) [0.125]
-[english] *(*(*(?1, ?2),?3),?4)
-[semantics] agent(recipient(pre_auxpass(?2, ?1),?3),?4)
+VP_passive -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj, BY,NP_animate_nsubj) [0.125]
+[english] *(*(*(?1, ?2),?3),*(?4,?5))
+[semantics] agent(recipient(?2,?3),?5)
 
 VP_passive_dat -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj) [0.5]
 [english] *(*(?1, ?2),?3)
 [semantics] theme(pre_auxpass(?2, ?1),?3)
 
-VP_passive_dat -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj, BY_mod) [0.5]
-[english] *(*(*(?1, ?2),?3),?4)
-[semantics] agent(theme(pre_auxpass(?2, ?1),?3),?4)
+VP_passive_dat -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj, BY,NP_animate_nsubj) [0.5]
+[english] *(*(*(?1, ?2),?3),*(?4,?5))
+[semantics] agent(theme(?2,?3),?5)
 
 
 
