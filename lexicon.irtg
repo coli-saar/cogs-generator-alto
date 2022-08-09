@@ -266,6 +266,12 @@ P_iobj -> r{{ cnt.next() }} [1]
   'called', 'heard', 'packed', 'saw', 'noticed',
   'studied', 'examined', 'observed', 'knew', 'investigated'
 ] %}
+{% for word, prob in V_trans_omissible|zipf -%}
+{% for cat in ['V_trans_omissible'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
 
 {% set V_trans_omissible_pp = [
   'eaten', 'painted', 'drawn', 'cleaned', 'cooked',
@@ -273,6 +279,13 @@ P_iobj -> r{{ cnt.next() }} [1]
   'called', 'heard', 'packed', 'seen', 'noticed',
   'studied', 'examined', 'observed', 'known', 'investigated'
 ] %}
+{% for word, prob in V_trans_omissible_pp|zipf -%}
+{% for cat in ['V_trans_omissible_pp'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
+
 
 
 {# Levin class 30. Verbs of Perception, 31.2 Admire Verbs, VerbNet poke-19, throw-17.1.1 #}
@@ -282,7 +295,6 @@ P_iobj -> r{{ cnt.next() }} [1]
   'threw', 'tolerated', 'valued', 'worshipped', 'discovered', 
   'held', 'stabbed', 'touched', 'pierced', 'tossed'
 ] %}
-
 
 {% for word, prob in V_trans_not_omissible|zipf -%}
 {% for cat in ['V_trans_not_omissible'] -%}
@@ -302,7 +314,12 @@ P_iobj -> r{{ cnt.next() }} [1]
   'held', 'stabbed', 'touched', 'pierced', 'tossed'
 ] %}
 
-
+{% for word, prob in V_trans_not_omissible_pp|zipf -%}
+{% for cat in ['V_trans_not_omissible_pp'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
 
 
 {# Levin 29.4 Declare verbs, Levin 30. Verbs of Perception, VerbNet admire-31.2, VerbNet wish-62 #}
@@ -332,7 +349,6 @@ P_iobj -> r{{ cnt.next() }} [1]
 {{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-
 {% endfor %}{% endfor %}
 
 
@@ -356,6 +372,13 @@ P_iobj -> r{{ cnt.next() }} [1]
   'changed', 'snapped', 'disintegrated', 'collapsed', 'decomposed', 
   'doubled', 'improved', 'inflated', 'enlarged', 'reddened'
 ] %}
+{% for word, prob in V_unacc_pp|zipf -%}
+{% for cat in ['V_unacc_pp'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
+
 
 {% set V_unerg = [
   'slept', 'smiled', 'laughed', 'sneezed', 'cried', 
@@ -363,7 +386,12 @@ P_iobj -> r{{ cnt.next() }} [1]
   'napped', 'snoozed', 'screamed', 'stuttered', 'frowned', 
   'giggled', 'scoffed', 'snored', 'smirked', 'gasped'
 ] %}
-
+{% for word, prob in V_unerg|zipf -%}
+{% for cat in ['V_unerg'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
 
 
 
@@ -381,7 +409,6 @@ P_iobj -> r{{ cnt.next() }} [1]
 {{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ word }}
-
 {% endfor %}{% endfor %}
 
 {% set V_dat = [
@@ -403,6 +430,14 @@ P_iobj -> r{{ cnt.next() }} [1]
   'brought', 'handed', 'forwarded', 'promised', 'mailed', 
   'loaned', 'posted', 'returned', 'slipped', 'wired'
 ] %}
+
+{% for word, prob in V_dat_pp|zipf -%}
+{% for cat in ['V_dat_pp'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
+
 
 
 
