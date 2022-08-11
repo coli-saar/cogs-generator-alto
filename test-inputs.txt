@@ -1,0 +1,7 @@
+// IRTG unannotated corpus file, v1.0
+//
+// interpretation english: de.up.ling.irtg.algebra.StringAlgebra
+
+Isabella examined the donut beside the tree
+the girl wanted to sleep
+the girl grew
