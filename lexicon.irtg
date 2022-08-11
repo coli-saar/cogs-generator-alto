@@ -1,23 +1,5 @@
 
 
-{# This is Alexander's toy lexicon for generating his example sentence.
-   It can be deleted once the full grammar has been converted.
- #}
-
-{% for word, cat in [
-    ('the', 'Det'), 
-    ('box', 'N_common_inanimate_nsubjpass'),
-    ('was', 'AUX'),
-    ('known', 'V_trans_omissible_pp')
-    ]%}
-{{ cat }} -> r{{ cnt.next() }}
-[english] {{ word }}
-[semantics] {{ word }}
-{% endfor %}
-
-
-
-
 
 {# Below is Najoung's lexicon for the original COGS grammar. #}
 
@@ -73,8 +55,6 @@
 } %}
 
 
-
-
 {# closed-class words #}
 
 Det -> r{{ cnt.next() }} [0.5]
@@ -97,6 +77,9 @@ BY -> r{{ cnt.next() }} [1]
 [english] by
 [semantics] by
 
+INF -> r{{ cnt.next() }} [1]
+[english] to
+[semantics] to
 
 
 {# 100 nouns, picked from the MacArthur Communicative Development Inventory and the BNC top frequent nouns
@@ -116,15 +99,13 @@ animate_nouns = [
     'guy', 'dealer', 'duke', 'tourist', 'landlord', 'human', 'host', 'priest', 'journalist', 'poet'
 ] %}
 
-
-
 {% for word, prob in animate_nouns|zipf -%}
 {% for cat in ['N_common_animate_dobj', 'N_common_animate_iobj', 'N_common_animate_nsubj', 'N_common_animate_nsubjpass'] -%}
 {{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ word }}
-
 {% endfor %}{% endfor %}
+
 
 {% set 
 inanimate_nouns = [
@@ -141,15 +122,11 @@ inanimate_nouns = [
 ] %}
 
 {% for word, prob in inanimate_nouns|zipf -%}
-{% for cat in ['N_common_inanimate_dobj', 'N_common_inanimate_iobj', 'N_common_inanimate_nsubj', 'N_common_inanimate_nsubjpass'] -%}
+{% for cat in ['N_common_inanimate_dobj', 'N_common_inanimate_nsubjpass'] -%}
 {{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ word }}
-
 {% endfor %}{% endfor %}
-
-
-
 
 
 {# 100 names, picked from https://www.ssa.gov/OACT/babynames/ #}
@@ -166,14 +143,15 @@ inanimate_nouns = [
     'Audrey', 'Ryan', 'Brooklyn', 'Asher', 'Bella', 'Nathan', 'Claire', 'Thomas', 'Skylar', 'Leo'
 ]%}
 
-{# TODO - add rules #}
-
-
-
+{% for word, prob in proper_nouns|zipf -%}
+{% for cat in ['N_prop_dobj', 'N_prop_iobj', 'N_prop_nsubj', 'N_prop_nsubjpass'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}{% endfor %}
 
 
 {# P + N: N from BNC + COCA #}
-
 {# 100 nouns that can appear with "on" #}
 {% set on_nouns = [
     'table', 'stage', 'bed', 'chair', 'stool', 'road', 'tree', 'box', 'surface', 'seat',
@@ -187,6 +165,12 @@ inanimate_nouns = [
     'carpet', 'plaque', 'boulder', 'leaf', 'mound', 'bun', 'dish', 'cat', 'podium', 'tabletop',
     'beach', 'bag', 'glacier', 'brick', 'crack', 'vessel', 'futon', 'turntable', 'rag', 'chessboard'
 ] %}
+
+{% for word, prob in on_nouns|zipf -%}
+N_on -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}
 
 {# 100 nouns that can appear with "in" #}
 {% set in_nouns = [
@@ -202,6 +186,12 @@ inanimate_nouns = [
     'jeep', 'shoebox', 'wagon', 'bakery', 'fishbowl', 'kennel', 'china', 'spaceship', 'penthouse', 'pyramid'
 ] %}
 
+{% for word, prob in in_nouns|zipf -%}
+N_in -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}
+
 {# 100 nouns that can appear with "beside" #}
 {% set beside_nouns = [
     'table', 'stage', 'bed', 'chair', 'book', 'road', 'tree', 'machine', 'house', 'seat',
@@ -216,8 +206,33 @@ inanimate_nouns = [
     'bicycle', 'keyboard', 'stool', 'pepper', 'warrior', 'pillar', 'monkey', 'cassette', 'broker', 'bin'
 ] %}
 
+{% for word, prob in beside_nouns|zipf -%}
+N_beside -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}
 
 
+{# Prepositions #}
+
+P_on -> r{{ cnt.next() }} [1]
+[english] on
+[semantics] on
+
+P_in -> r{{ cnt.next() }} [1]
+[english] in
+[semantics] in
+
+P_beside -> r{{ cnt.next() }} [1]
+[english] beside
+[semantics] beside
+
+P_iobj -> r{{ cnt.next() }} [1]
+[english] to
+[semantics] to
+
+
+{# TODO - add rules #}
 
 
 
@@ -233,6 +248,12 @@ inanimate_nouns = [
   'called', 'heard', 'packed', 'saw', 'noticed',
   'studied', 'examined', 'observed', 'knew', 'investigated'
 ] %}
+{% for word, prob in V_trans_omissible|zipf -%}
+{% for cat in ['V_trans_omissible'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
 
 {% set V_trans_omissible_pp = [
   'eaten', 'painted', 'drawn', 'cleaned', 'cooked',
@@ -240,6 +261,13 @@ inanimate_nouns = [
   'called', 'heard', 'packed', 'seen', 'noticed',
   'studied', 'examined', 'observed', 'known', 'investigated'
 ] %}
+{% for word, prob in V_trans_omissible_pp|zipf -%}
+{% for cat in ['V_trans_omissible_pp'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
+
 
 
 {# Levin class 30. Verbs of Perception, 31.2 Admire Verbs, VerbNet poke-19, throw-17.1.1 #}
@@ -249,7 +277,6 @@ inanimate_nouns = [
   'threw', 'tolerated', 'valued', 'worshipped', 'discovered', 
   'held', 'stabbed', 'touched', 'pierced', 'tossed'
 ] %}
-
 
 {% for word, prob in V_trans_not_omissible|zipf -%}
 {% for cat in ['V_trans_not_omissible'] -%}
@@ -269,7 +296,12 @@ inanimate_nouns = [
   'held', 'stabbed', 'touched', 'pierced', 'tossed'
 ] %}
 
-
+{% for word, prob in V_trans_not_omissible_pp|zipf -%}
+{% for cat in ['V_trans_not_omissible_pp'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
 
 
 {# Levin 29.4 Declare verbs, Levin 30. Verbs of Perception, VerbNet admire-31.2, VerbNet wish-62 #}
@@ -279,6 +311,12 @@ inanimate_nouns = [
   'appreciated', 'respected', 'supported', 'tolerated', 'valued',
   'wished', 'dreamed', 'expected', 'imagined', 'meant'
 ] %}
+{% for word, prob in V_cp_taking|zipf -%}
+{% for cat in ['V_cp_taking'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
  
 {# VerbNet want-32.1, VerbNet try-61, VerbNet wish-62, VerbNet long-32.2, VerbNet admire-31.2-1 #}
 {% set V_inf_taking = [
@@ -288,7 +326,12 @@ inanimate_nouns = [
   'dreamed', 'meant', 'longed', 'yearned', 'itched'
 ] %}
 
-
+{% for word, prob in V_inf_taking|zipf -%}
+{% for cat in ['V_inf_taking'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] "{{ verbs_lemmas[word] }}[agent=xcomp!agent]"
+{% endfor %}{% endfor %}
 
 
 {# 1.1.2.1 Causative-Inchoative Alternation #}
@@ -298,6 +341,12 @@ inanimate_nouns = [
   'changed', 'snapped', 'disintegrated', 'collapsed', 'decomposed',
   'doubled', 'improved', 'inflated', 'enlarged', 'reddened', 
 ] %}
+{% for word, prob in V_unacc|zipf -%}
+{% for cat in ['V_unacc'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
 
 {% set V_unacc_pp = [
   'rolled', 'frozen', 'burned', 'shortened', 'floated',
@@ -305,6 +354,13 @@ inanimate_nouns = [
   'changed', 'snapped', 'disintegrated', 'collapsed', 'decomposed', 
   'doubled', 'improved', 'inflated', 'enlarged', 'reddened'
 ] %}
+{% for word, prob in V_unacc_pp|zipf -%}
+{% for cat in ['V_unacc_pp'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
+
 
 {% set V_unerg = [
   'slept', 'smiled', 'laughed', 'sneezed', 'cried', 
@@ -312,7 +368,12 @@ inanimate_nouns = [
   'napped', 'snoozed', 'screamed', 'stuttered', 'frowned', 
   'giggled', 'scoffed', 'snored', 'smirked', 'gasped'
 ] %}
-
+{% for word, prob in V_unerg|zipf -%}
+{% for cat in ['V_unerg'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
 
 
 
@@ -325,6 +386,12 @@ inanimate_nouns = [
   'talk', 'dance', 'giggle', 'jog', 'smirk',
   'call', 'sketch', 'dust', 'clean', 'investigate'
 ] %}
+{% for word, prob in V_inf|zipf -%}
+{% for cat in ['V_inf'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}{% endfor %}
 
 {% set V_dat = [
   'gave', 'lended', 'sold', 'offered', 'fed',
@@ -332,6 +399,12 @@ inanimate_nouns = [
   'brought', 'handed', 'forwarded', 'promised', 'mailed',
   'loaned', 'posted', 'returned', 'slipped', 'wired'
 ] %}
+{% for word, prob in V_dat|zipf -%}
+{% for cat in ['V_dat'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}{% endfor %}
 
 {% set V_dat_pp = [
   'given', 'lended', 'sold', 'offered', 'fed', 
@@ -339,6 +412,14 @@ inanimate_nouns = [
   'brought', 'handed', 'forwarded', 'promised', 'mailed', 
   'loaned', 'posted', 'returned', 'slipped', 'wired'
 ] %}
+
+{% for word, prob in V_dat_pp|zipf -%}
+{% for cat in ['V_dat_pp'] -%}
+{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}{% endfor %}
+
 
 
 
