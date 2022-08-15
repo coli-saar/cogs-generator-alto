@@ -186,7 +186,7 @@ NP_beside -> r{{ cnt.next() }}(Det, N_beside) [0.9]
 
 PP_loc -> r{{ cnt.next() }}(P_on, NP_on) [0.333]
 [english] *(?1, ?2)
-[semantics] ?2
+[semantics] pre_case(?2, ?1)
 
 PP_loc -> r{{ cnt.next() }}(P_in, NP_in) [0.333]
 [english] *(?1, ?2)
