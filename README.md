@@ -122,3 +122,7 @@ grep -cFwf out.txt gold-outputs.txt
 will determine the number of lines in `out.txt` that are identical to their corresponding lines in `gold-outputs.txt` ([source](https://stackoverflow.com/questions/25283335/counting-equal-lines-in-two-files
 )). You can use this to easily compute exact match.
 
+
+### Corpus generation
+
+See [here](https://github.com/coli-saar/alto/wiki/Generating-a-COGS-corpus) for an explanation of how to generate a new random corpus from a grammar.
