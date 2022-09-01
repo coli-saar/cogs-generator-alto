@@ -403,7 +403,7 @@ P_iobj -> r{{ cnt.next() }} [1]
 {% for cat in ['V_dat'] -%}
 {{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
-[semantics] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
 {% endfor %}{% endfor %}
 
 {% set V_dat_pp = [
