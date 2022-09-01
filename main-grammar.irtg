@@ -214,7 +214,7 @@ VP_passive_dat -> AUX V_dat_pp NP_inanimate_dobj [0.5] | AUX V_dat_pp NP_inanima
 #}
 VP_passive -> r{{ cnt.next() }}(AUX,V_trans_not_omissible_pp) [0.125]
 [english] *(?1, ?2)
-[semantics] pre_auxpass(?2, ?1)
+[semantics] ?2
 
 VP_passive -> r{{ cnt.next() }}(AUX,V_trans_not_omissible_pp, BY,NP_animate_nsubj) [0.125]
 [english] *(*(?1, ?2),*(?3,?4))
@@ -222,7 +222,7 @@ VP_passive -> r{{ cnt.next() }}(AUX,V_trans_not_omissible_pp, BY,NP_animate_nsub
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_trans_omissible_pp) [0.125]
 [english] *(?1, ?2)
-[semantics] pre_auxpass(?2, ?1)
+[semantics] ?2
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_trans_omissible_pp, BY,NP_animate_nsubj) [0.125]
 [english] *(*(?1, ?2),*(?3,?4))
@@ -230,7 +230,7 @@ VP_passive -> r{{ cnt.next() }}(AUX, V_trans_omissible_pp, BY,NP_animate_nsubj) 
 
 VP_passive -> r{{ cnt.next() }}(AUX,V_unacc_pp) [0.125]
 [english] *(?1, ?2)
-[semantics] pre_auxpass(?2, ?1)
+[semantics] ?2
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_unacc_pp, BY,NP_animate_nsubj) [0.125]
 [english] *(*(?1, ?2),*(?3,?4))
@@ -238,7 +238,7 @@ VP_passive -> r{{ cnt.next() }}(AUX, V_unacc_pp, BY,NP_animate_nsubj) [0.125]
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj) [0.125]
 [english] *(*(?1, ?2),?3)
-[semantics] recipient(pre_auxpass(?2, ?1),?3)
+[semantics] recipient(?2,?3)
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj, BY,NP_animate_nsubj) [0.125]
 [english] *(*(*(?1, ?2),?3),*(?4,?5))
@@ -246,7 +246,7 @@ VP_passive -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj, BY,NP_animate_nsubj) [0.
 
 VP_passive_dat -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj) [0.5]
 [english] *(*(?1, ?2),?3)
-[semantics] theme(pre_auxpass(?2, ?1),?3)
+[semantics] theme(?2,?3)
 
 VP_passive_dat -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj, BY,NP_animate_nsubj) [0.5]
 [english] *(*(*(?1, ?2),?3),*(?4,?5))
