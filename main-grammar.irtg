@@ -226,7 +226,7 @@ VP_passive -> r{{ cnt.next() }}(AUX, V_trans_omissible_pp) [0.125]
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_trans_omissible_pp, BY,NP_animate_nsubj) [0.125]
 [english] *(*(?1, ?2),*(?3,?4))
-[semantics] agent(?2,?4))
+[semantics] agent(?2,?4)
 
 VP_passive -> r{{ cnt.next() }}(AUX,V_unacc_pp) [0.125]
 [english] *(?1, ?2)
@@ -234,7 +234,7 @@ VP_passive -> r{{ cnt.next() }}(AUX,V_unacc_pp) [0.125]
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_unacc_pp, BY,NP_animate_nsubj) [0.125]
 [english] *(*(?1, ?2),*(?3,?4))
-[semantics] agent(?2,?4))
+[semantics] agent(?2,?4)
 
 VP_passive -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj) [0.125]
 [english] *(*(?1, ?2),?3)
