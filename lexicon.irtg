@@ -4,22 +4,22 @@
 {# Below is Najoung's lexicon for the original COGS grammar. #}
 
 
-{% set verbs_lemmas = { 
+{% set verbs_lemmas = {
   'ate':'eat', 'painted':'paint', 'drew':'draw', 'cleaned':'clean',
   'cooked':'cook', 'dusted':'dust', 'hunted':'hunt', 'nursed':'nurse',
   'sketched':'sketch', 'washed':'wash', 'juggled':'juggle', 'called':'call',
-  'eaten':'eat', 'drawn':'draw', 'baked':'bake', 'liked':'like', 'knew':'know', 
+  'eaten':'eat', 'drawn':'draw', 'baked':'bake', 'liked':'like', 'knew':'know',
   'helped':'help', 'saw':'see', 'found':'find', 'heard':'hear', 'noticed':'notice',
   'loved':'love', 'admired':'admire', 'adored':'adore', 'appreciated':'appreciate',
-  'missed':'miss', 'respected':'respect', 'tolerated':'tolerate', 'valued':'value', 
+  'missed':'miss', 'respected':'respect', 'tolerated':'tolerate', 'valued':'value',
   'worshipped':'worship', 'observed':'observe', 'discovered':'discover', 'held':'hold',
   'stabbed':'stab', 'touched':'touch', 'pierced':'pierce', 'poked':'poke',
   'known':'know', 'seen':'see', 'hit':'hit', 'hoped':'hope', 'said':'say',
   'believed':'believe', 'confessed':'confess', 'declared':'declare', 'proved':'prove',
-  'thought':'think', 'supported':'support', 'wished':'wish', 'dreamed':'dream', 
-  'expected':'expect', 'imagined':'imagine', 'envied':'envy', 'wanted':'want', 
+  'thought':'think', 'supported':'support', 'wished':'wish', 'dreamed':'dream',
+  'expected':'expect', 'imagined':'imagine', 'envied':'envy', 'wanted':'want',
   'preferred':'prefer', 'needed':'need', 'intended':'intend', 'tried':'try',
-  'attempted':'attempt', 'planned':'plan','craved':'crave','hated':'hate','loved':'love', 
+  'attempted':'attempt', 'planned':'plan','craved':'crave','hated':'hate','loved':'love',
   'enjoyed':'enjoy', 'rolled':'roll', 'froze':'freeze', 'burned':'burn', 'shortened':'shorten',
   'floated':'float', 'grew':'grow', 'slid':'slide', 'broke':'break', 'crumpled':'crumple',
   'split':'split', 'changed':'change', 'snapped':'snap', 'tore':'tear', 'collapsed':'collapse',
@@ -31,10 +31,10 @@
   'walked':'walk', 'ran':'run', 'napped':'nap', 'snoozed':'snooze', 'screamed':'scream',
   'stuttered':'stutter', 'frowned':'frown', 'giggled':'giggle', 'scoffed':'scoff',
   'snored':'snore', 'snorted':'snort', 'smirked':'smirk', 'gasped':'gasp',
-  'gave':'give', 'lended':'lend', 'sold':'sell', 'offered':'offer', 'fed':'feed', 
+  'gave':'give', 'lended':'lend', 'sold':'sell', 'offered':'offer', 'fed':'feed',
   'passed':'pass', 'rented':'rent', 'served':'serve','awarded':'award', 'promised':'promise',
   'brought':'bring', 'sent':'send', 'handed':'hand', 'forwarded':'forward', 'mailed':'mail',
-  'posted':'post','given':'give', 'shipped':'ship', 'packed':'pack', 'studied':'study', 
+  'posted':'post','given':'give', 'shipped':'ship', 'packed':'pack', 'studied':'study',
   'examined':'examine', 'investigated':'investigate', 'thrown':'throw', 'threw':'throw',
   'tossed':'toss', 'meant':'mean', 'longed':'long', 'yearned':'yearn', 'itched':'itch',
   'loaned':'loan', 'returned':'return', 'slipped':'slip', 'wired':'wire', 'crawled':'crawl',
@@ -85,14 +85,14 @@ INF -> r{{ cnt.next() }} [1]
 {# 100 nouns, picked from the MacArthur Communicative Development Inventory and the BNC top frequent nouns
    BNC freq rank: http://ucrel.lancs.ac.uk/bncfreq/flists.html
    #}
-{% set 
+{% set
 animate_nouns = [
     'girl', 'boy', 'cat', 'dog', 'baby', 'child', 'teacher', 'frog', 'chicken', 'mouse',
     'lion', 'monkey', 'bear', 'giraffe', 'horse', 'bird', 'duck', 'bunny', 'butterfly', 'penguin',
     'student', 'professor', 'monster', 'hero', 'sailor', 'lawyer', 'customer', 'scientist', 'princess', 'president',
     'cow', 'crocodile', 'goose', 'hen', 'deer', 'donkey', 'bee', 'fly', 'kitty', 'tiger',
     'wolf', 'zebra', 'mother', 'father', 'patient', 'manager', 'director', 'king', 'queen', 'kid',
-    'fish', 'moose',  'pig', 'pony', 'puppy', 'sheep', 'squirrel', 'lamb', 'turkey', 'turtle', 
+    'fish', 'moose',  'pig', 'pony', 'puppy', 'sheep', 'squirrel', 'lamb', 'turkey', 'turtle',
     'doctor', 'pupil', 'prince', 'driver', 'consumer', 'writer', 'farmer', 'friend', 'judge', 'visitor',
     'guest', 'servant', 'chief', 'citizen', 'champion', 'prisoner', 'captain', 'soldier', 'passenger', 'tenant',
     'politician', 'resident', 'buyer', 'spokesman', 'governor', 'guard', 'creature', 'coach', 'producer', 'researcher',
@@ -106,10 +106,30 @@ animate_nouns = [
 [semantics] {{ word }}
 {% endfor %}{% endfor %}
 
+{# only generate target common noun as objects #}
+N_common_animate_dobj_targeted -> r{{ cnt.next() }} [1]
+[english] hedgehog
+[semantics] hedgehog
 
-{% set 
+{# only generate target proper noun as objects #}
+N_prop_dobj_targeted -> r{{ cnt.next() }} [1]
+[english] Lina
+[semantics] Lina
+
+{# only generate target common noun as subjects #}
+N_common_animate_nsubj_targeted -> r{{ cnt.next() }} [1]
+[english] hedgehog
+[semantics] hedgehog
+
+{# only generate target proper noun as subjects #}
+N_prop_nsubj_targeted -> r{{ cnt.next() }} [1]
+[english] Lina
+[semantics] Lina
+
+
+{% set
 inanimate_nouns = [
-    'cake', 'donut', 'cookie', 'box', 'rose', 'drink', 'raisin', 'melon', 'sandwich', 'strawberry', 
+    'cake', 'donut', 'cookie', 'box', 'rose', 'drink', 'raisin', 'melon', 'sandwich', 'strawberry',
     'ball', 'balloon', 'bat', 'block', 'book', 'crayon', 'chalk', 'doll', 'game', 'glue',
     'lollipop', 'hamburger', 'banana', 'biscuit', 'muffin', 'pancake', 'pizza', 'potato', 'pretzel', 'pumpkin',
     'sweetcorn', 'yogurt', 'pickle', 'jigsaw', 'pen', 'pencil', 'present', 'toy', 'cracker', 'brush',
@@ -131,7 +151,7 @@ inanimate_nouns = [
 
 {# 100 names, picked from https://www.ssa.gov/OACT/babynames/ #}
 {% set proper_nouns = [
-    'Emma', 'Liam', 'Olivia', 'Noah', 'Ava', 'William', 'Isabella', 'James', 'Sophia', 'Oliver', 
+    'Emma', 'Liam', 'Olivia', 'Noah', 'Ava', 'William', 'Isabella', 'James', 'Sophia', 'Oliver',
     'Charlotte', 'Benjamin', 'Mia', 'Elijah', 'Amelia', 'Lucas', 'Harper', 'Mason', 'Evelyn', 'Logan',
     'Abigail', 'Alexander', 'Emily', 'Ethan', 'Elizabeth', 'Jacob', 'Mila', 'Michael', 'Ella', 'Daniel',
     'Avery', 'Henry', 'Sofia', 'Jackson', 'Camila', 'Sebastian', 'Aria', 'Aiden', 'Scarlett', 'Matthew',
@@ -243,7 +263,7 @@ P_iobj -> r{{ cnt.next() }} [1]
    And some intuition-based selection.  #}
 
 {% set V_trans_omissible = [
-  'ate', 'painted', 'drew', 'cleaned', 'cooked', 
+  'ate', 'painted', 'drew', 'cleaned', 'cooked',
   'dusted', 'hunted', 'nursed', 'sketched', 'juggled',
   'called', 'heard', 'packed', 'saw', 'noticed',
   'studied', 'examined', 'observed', 'knew', 'investigated'
@@ -274,7 +294,7 @@ P_iobj -> r{{ cnt.next() }} [1]
 {% set V_trans_not_omissible = [
   'liked', 'helped', 'found', 'loved', 'poked',
   'admired', 'adored', 'appreciated', 'missed', 'respected',
-  'threw', 'tolerated', 'valued', 'worshipped', 'discovered', 
+  'threw', 'tolerated', 'valued', 'worshipped', 'discovered',
   'held', 'stabbed', 'touched', 'pierced', 'tossed'
 ] %}
 
@@ -290,9 +310,9 @@ P_iobj -> r{{ cnt.next() }} [1]
 
 
 {% set V_trans_not_omissible_pp = [
-  'liked', 'helped', 'found', 'loved', 'poked', 
-  'admired', 'adored', 'appreciated', 'missed', 'respected', 
-  'thrown', 'tolerated', 'valued', 'worshipped', 'discovered', 
+  'liked', 'helped', 'found', 'loved', 'poked',
+  'admired', 'adored', 'appreciated', 'missed', 'respected',
+  'thrown', 'tolerated', 'valued', 'worshipped', 'discovered',
   'held', 'stabbed', 'touched', 'pierced', 'tossed'
 ] %}
 
@@ -317,11 +337,11 @@ P_iobj -> r{{ cnt.next() }} [1]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}{% endfor %}
- 
+
 {# VerbNet want-32.1, VerbNet try-61, VerbNet wish-62, VerbNet long-32.2, VerbNet admire-31.2-1 #}
 {% set V_inf_taking = [
   'wanted', 'preferred', 'needed', 'intended', 'tried',
-  'attempted', 'planned', 'expected', 'hoped', 'wished', 
+  'attempted', 'planned', 'expected', 'hoped', 'wished',
   'craved', 'liked', 'hated', 'loved', 'enjoyed',
   'dreamed', 'meant', 'longed', 'yearned', 'itched'
 ] %}
@@ -336,10 +356,10 @@ P_iobj -> r{{ cnt.next() }} [1]
 
 {# 1.1.2.1 Causative-Inchoative Alternation #}
 {% set V_unacc = [
-  'rolled', 'froze', 'burned', 'shortened', 'floated', 
-  'grew', 'slid', 'broke', 'crumpled', 'split', 
+  'rolled', 'froze', 'burned', 'shortened', 'floated',
+  'grew', 'slid', 'broke', 'crumpled', 'split',
   'changed', 'snapped', 'disintegrated', 'collapsed', 'decomposed',
-  'doubled', 'improved', 'inflated', 'enlarged', 'reddened', 
+  'doubled', 'improved', 'inflated', 'enlarged', 'reddened',
 ] %}
 {% for word, prob in V_unacc|zipf -%}
 {% for cat in ['V_unacc'] -%}
@@ -351,7 +371,7 @@ P_iobj -> r{{ cnt.next() }} [1]
 {% set V_unacc_pp = [
   'rolled', 'frozen', 'burned', 'shortened', 'floated',
   'grown', 'slid', 'broken', 'crumpled', 'split',
-  'changed', 'snapped', 'disintegrated', 'collapsed', 'decomposed', 
+  'changed', 'snapped', 'disintegrated', 'collapsed', 'decomposed',
   'doubled', 'improved', 'inflated', 'enlarged', 'reddened'
 ] %}
 {% for word, prob in V_unacc_pp|zipf -%}
@@ -363,9 +383,9 @@ P_iobj -> r{{ cnt.next() }} [1]
 
 
 {% set V_unerg = [
-  'slept', 'smiled', 'laughed', 'sneezed', 'cried', 
-  'talked', 'danced', 'jogged', 'walked', 'ran', 
-  'napped', 'snoozed', 'screamed', 'stuttered', 'frowned', 
+  'slept', 'smiled', 'laughed', 'sneezed', 'cried',
+  'talked', 'danced', 'jogged', 'walked', 'ran',
+  'napped', 'snoozed', 'screamed', 'stuttered', 'frowned',
   'giggled', 'scoffed', 'snored', 'smirked', 'gasped'
 ] %}
 {% for word, prob in V_unerg|zipf -%}
@@ -395,7 +415,7 @@ P_iobj -> r{{ cnt.next() }} [1]
 
 {% set V_dat = [
   'gave', 'lended', 'sold', 'offered', 'fed',
-  'passed', 'sent', 'rented', 'served', 'awarded', 
+  'passed', 'sent', 'rented', 'served', 'awarded',
   'brought', 'handed', 'forwarded', 'promised', 'mailed',
   'loaned', 'posted', 'returned', 'slipped', 'wired'
 ] %}
@@ -407,9 +427,9 @@ P_iobj -> r{{ cnt.next() }} [1]
 {% endfor %}{% endfor %}
 
 {% set V_dat_pp = [
-  'given', 'lended', 'sold', 'offered', 'fed', 
+  'given', 'lended', 'sold', 'offered', 'fed',
   'passed', 'sent', 'rented', 'served', 'awarded',
-  'brought', 'handed', 'forwarded', 'promised', 'mailed', 
+  'brought', 'handed', 'forwarded', 'promised', 'mailed',
   'loaned', 'posted', 'returned', 'slipped', 'wired'
 ] %}
 
@@ -419,7 +439,6 @@ P_iobj -> r{{ cnt.next() }} [1]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}{% endfor %}
-
 
 
 
