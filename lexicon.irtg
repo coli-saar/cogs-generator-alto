@@ -251,6 +251,9 @@ P_iobj -> r{{ cnt.next() }} [1]
 [english] to
 [semantics] to
 
+Rel_pron -> r{{ cnt.next() }} [1]
+[english] that
+[semantics] that
 
 {# TODO - add rules #}
 
