@@ -35,10 +35,9 @@ VP_external -> r{{ cnt.next() }}(V_trans_not_omissible, NP_dobj) [0.125]
 [english] *(?1, ?2)
 [semantics] theme(?1, ?2)
 
-{#subject control verbs, prob: 0.923*0.125=0.115 #}
-S! -> r{{ cnt.next() }}(NP_animate_nsubj_targeted, V_inf_taking, INF, V_inf) [0.115]
-[english] *(?1, *(*(?2,?3),?4))
-[semantics] xcomp(agent(?2,?1), ?4)
+VP_external -> r{{ cnt.next() }}(V_inf_taking, INF, V_inf) [0.125]
+[english] *(?1, *(?2, ?3))
+[semantics] xcomp(?1, ?3)
 
 VP_external -> r{{ cnt.next() }}(V_dat, NP_inanimate_dobj, PP_iobj) [0.125]
 [english] *(*(?1, ?2), ?3)

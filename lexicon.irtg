@@ -267,12 +267,9 @@ P_iobj -> r{{ cnt.next() }} [1]
 [english] to
 [semantics] to
 
-
-{# TODO - add rules #}
-
-
-
-
+Rel_pron -> r{{ cnt.next() }} [1]
+[english] that
+[semantics] that
 
 
 {# Levin, '1.2.1 Unspecified Object Alternation'
@@ -285,11 +282,10 @@ P_iobj -> r{{ cnt.next() }} [1]
   'studied', 'examined', 'observed', 'knew', 'investigated'
 ] %}
 {% for word, prob in V_trans_omissible|zipf -%}
-{% for cat in ['V_trans_omissible'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_trans_omissible -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {% set V_trans_omissible_pp = [
   'eaten', 'painted', 'drawn', 'cleaned', 'cooked',
@@ -298,11 +294,10 @@ P_iobj -> r{{ cnt.next() }} [1]
   'studied', 'examined', 'observed', 'known', 'investigated'
 ] %}
 {% for word, prob in V_trans_omissible_pp|zipf -%}
-{% for cat in ['V_trans_omissible_pp'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_trans_omissible_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 
 
@@ -315,14 +310,10 @@ P_iobj -> r{{ cnt.next() }} [1]
 ] %}
 
 {% for word, prob in V_trans_not_omissible|zipf -%}
-{% for cat in ['V_trans_not_omissible'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_trans_not_omissible -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-
-{% endfor %}{% endfor %}
-
-
+{% endfor %}
 
 
 {% set V_trans_not_omissible_pp = [
@@ -333,11 +324,10 @@ P_iobj -> r{{ cnt.next() }} [1]
 ] %}
 
 {% for word, prob in V_trans_not_omissible_pp|zipf -%}
-{% for cat in ['V_trans_not_omissible_pp'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_trans_not_omissible_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 
 {# Levin 29.4 Declare verbs, Levin 30. Verbs of Perception, VerbNet admire-31.2, VerbNet wish-62 #}
@@ -348,11 +338,10 @@ P_iobj -> r{{ cnt.next() }} [1]
   'wished', 'dreamed', 'expected', 'imagined', 'meant'
 ] %}
 {% for word, prob in V_cp_taking|zipf -%}
-{% for cat in ['V_cp_taking'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_cp_taking -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {# VerbNet want-32.1, VerbNet try-61, VerbNet wish-62, VerbNet long-32.2, VerbNet admire-31.2-1 #}
 {% set V_inf_taking = [
@@ -363,11 +352,10 @@ P_iobj -> r{{ cnt.next() }} [1]
 ] %}
 
 {% for word, prob in V_inf_taking|zipf -%}
-{% for cat in ['V_inf_taking'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_inf_taking -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] "{{ verbs_lemmas[word] }}[agent=xcomp!agent]"
-{% endfor %}{% endfor %}
+{% endfor %}
 
 
 {# 1.1.2.1 Causative-Inchoative Alternation #}
@@ -378,11 +366,10 @@ P_iobj -> r{{ cnt.next() }} [1]
   'doubled', 'improved', 'inflated', 'enlarged', 'reddened',
 ] %}
 {% for word, prob in V_unacc|zipf -%}
-{% for cat in ['V_unacc'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_unacc -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {% set V_unacc_pp = [
   'rolled', 'frozen', 'burned', 'shortened', 'floated',
@@ -391,11 +378,10 @@ P_iobj -> r{{ cnt.next() }} [1]
   'doubled', 'improved', 'inflated', 'enlarged', 'reddened'
 ] %}
 {% for word, prob in V_unacc_pp|zipf -%}
-{% for cat in ['V_unacc_pp'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_unacc_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 
 {% set V_unerg = [
@@ -405,13 +391,10 @@ P_iobj -> r{{ cnt.next() }} [1]
   'giggled', 'scoffed', 'snored', 'smirked', 'gasped'
 ] %}
 {% for word, prob in V_unerg|zipf -%}
-{% for cat in ['V_unerg'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_unerg -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
-
-
+{% endfor %}
 
 
 {# 10 DO omissible transitives, 10 unergatives #}
@@ -423,11 +406,10 @@ P_iobj -> r{{ cnt.next() }} [1]
   'call', 'sketch', 'dust', 'clean', 'investigate'
 ] %}
 {% for word, prob in V_inf|zipf -%}
-{% for cat in ['V_inf'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_inf -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ word }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {% set V_dat = [
   'gave', 'lended', 'sold', 'offered', 'fed',
@@ -436,11 +418,10 @@ P_iobj -> r{{ cnt.next() }} [1]
   'loaned', 'posted', 'returned', 'slipped', 'wired'
 ] %}
 {% for word, prob in V_dat|zipf -%}
-{% for cat in ['V_dat'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_dat -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {% set V_dat_pp = [
   'given', 'lended', 'sold', 'offered', 'fed',
@@ -450,18 +431,7 @@ P_iobj -> r{{ cnt.next() }} [1]
 ] %}
 
 {% for word, prob in V_dat_pp|zipf -%}
-{% for cat in ['V_dat_pp'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_dat_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
-
-
-
-
-
-
-
-
-
-
+{% endfor %}

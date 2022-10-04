@@ -2,6 +2,15 @@
 //
 // interpretation english: de.up.ling.irtg.algebra.StringAlgebra
 
-Isabella examined the donut beside the tree
-the girl wanted to sleep
-the girl grew
+
+Lina slept
+Lina broke the clock
+Lina ate
+Lina ate a deer
+Lina liked the cake on the plate
+Lina wanted to nap
+the boy hoped that Lina liked the cake on the plate
+Lina gave a cake to the girl
+Lina gave the girl a cake
+
+
