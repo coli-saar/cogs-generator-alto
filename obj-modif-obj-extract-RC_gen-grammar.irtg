@@ -1,0 +1,33 @@
+{## Subsets of main grammar that only generate
+object-extracted clauses that modify NP in object position ##}
+
+
+S! -> r{{ cnt.next() }}(NP_animate_nsubj, VP_external) [1]
+[english] *(?1, ?2)
+[semantics] pre_agent(?2, ?1)
+
+VP_external -> r{{ cnt.next() }}(V_trans_omissible_targeted, NP_inanimate_dobj, Rel_clause) [1]
+[english] *(?1, *(?2,?3))
+[semantics] nmod(theme(?1, ?2),?3)
+{# [semantics] pre_theme(nmod(?1,?3),?2) #}
+
+
+V_trans_omissible_targeted -> r{{ cnt.next() }} [1]
+[english] ate
+[semantics] "eat[theme=nmod!theme]"
+
+Rel_clause -> r{{ cnt.next() }}(Rel_pron, NP_animate_nsubj, V_unacc) [1]
+[english] *(*(?1, ?2), ?3)
+[semantics] pre_agent(pre_case(?3, ?1), ?2)
+
+NP_inanimate_dobj -> r{{ cnt.next() }}(Det, N_common_inanimate_dobj) [1]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
+[english] ?1
+[semantics] ?1
+NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
