@@ -111,20 +111,36 @@ N_common_animate_dobj_targeted -> r{{ cnt.next() }} [1]
 [english] hedgehog
 [semantics] hedgehog
 
+N_common_animate_dobj_targeted_primitive -> r{{ cnt.next() }} [1]
+[english] shark
+[semantics] shark
+
 {# only generate target proper noun as objects #}
 N_prop_dobj_targeted -> r{{ cnt.next() }} [1]
 [english] Lina
 [semantics] Lina
+
+N_prop_dobj_targeted_primitive -> r{{ cnt.next() }} [1]
+[english] Paula
+[semantics] Paula
 
 {# only generate target common noun as subjects #}
 N_common_animate_nsubj_targeted -> r{{ cnt.next() }} [1]
 [english] hedgehog
 [semantics] hedgehog
 
+N_common_animate_nsubj_targeted_primitive -> r{{ cnt.next() }} [1]
+[english] shark
+[semantics] shark
+
 {# only generate target proper noun as subjects #}
 N_prop_nsubj_targeted -> r{{ cnt.next() }} [1]
 [english] Lina
 [semantics] Lina
+
+N_prop_nsubj_targeted_primitive -> r{{ cnt.next() }} [1]
+[english] Paula
+[semantics] Paula
 
 
 {% set

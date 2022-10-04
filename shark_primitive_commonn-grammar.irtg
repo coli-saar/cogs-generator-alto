@@ -1,0 +1,9 @@
+{# Only generates primitive form-meaning pairs for `shark' #}
+
+S! -> r{{ cnt.next() }}(N_common) [1.0]
+[english] ?1
+[semantics] ?1
+
+N_prop -> r{{ cnt.next() }} [1.0]
+[english] shark
+[semantics] shark
