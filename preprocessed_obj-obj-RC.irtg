@@ -4826,37 +4826,341 @@ V_dat_pp -> r1555 [0.016881502890614384]
 
 
 
+V_trans_omissible_obj_RC -> r1556 [0.33402836011058906]
+[english] ate
+[semantics] "eat[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1557 [0.13404078858765317]
+[english] painted
+[semantics] "paint[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1558 [0.08118983449041972]
+[english] drew
+[semantics] "draw[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1559 [0.05825966977427891]
+[english] cleaned
+[semantics] "clean[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1560 [0.045854068200707636]
+[english] cooked
+[semantics] "cook[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1561 [0.03823290310401457]
+[english] dusted
+[semantics] "dust[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1562 [0.03314541629748973]
+[english] hunted
+[semantics] "hunt[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1563 [0.02954399547074786]
+[english] nursed
+[semantics] "nurse[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1564 [0.026880623601982966]
+[english] sketched
+[semantics] "sketch[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1565 [0.024843151515100505]
+[english] juggled
+[semantics] "juggle[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1566 [0.023241837743417502]
+[english] called
+[semantics] "call[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1567 [0.021955269966808383]
+[english] heard
+[semantics] "hear[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1568 [0.02090245596302799]
+[english] packed
+[semantics] "pack[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1569 [0.020027472958170183]
+[english] saw
+[semantics] "see[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1570 [0.019290571498074466]
+[english] noticed
+[semantics] "notice[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1571 [0.018662789655653128]
+[english] studied
+[semantics] "study[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1572 [0.018122569172347593]
+[english] examined
+[semantics] "examine[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1573 [0.01765356043958695]
+[english] observed
+[semantics] "observe[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1574 [0.01724315855931527]
+[english] knew
+[semantics] "know[theme=nmod!theme]"
+V_trans_omissible_obj_RC -> r1575 [0.016881502890614384]
+[english] investigated
+[semantics] "investigate[theme=nmod!theme]"
+
+
+V_unacc_obj_RC -> r1576 [0.33402836011058906]
+[english] rolled
+[semantics] "roll[theme=nmod!theme]"
+V_unacc_obj_RC -> r1577 [0.13404078858765317]
+[english] froze
+[semantics] "freeze[theme=nmod!theme]"
+V_unacc_obj_RC -> r1578 [0.08118983449041972]
+[english] burned
+[semantics] "burn[theme=nmod!theme]"
+V_unacc_obj_RC -> r1579 [0.05825966977427891]
+[english] shortened
+[semantics] "shorten[theme=nmod!theme]"
+V_unacc_obj_RC -> r1580 [0.045854068200707636]
+[english] floated
+[semantics] "float[theme=nmod!theme]"
+V_unacc_obj_RC -> r1581 [0.03823290310401457]
+[english] grew
+[semantics] "grow[theme=nmod!theme]"
+V_unacc_obj_RC -> r1582 [0.03314541629748973]
+[english] slid
+[semantics] "slide[theme=nmod!theme]"
+V_unacc_obj_RC -> r1583 [0.02954399547074786]
+[english] broke
+[semantics] "break[theme=nmod!theme]"
+V_unacc_obj_RC -> r1584 [0.026880623601982966]
+[english] crumpled
+[semantics] "crumple[theme=nmod!theme]"
+V_unacc_obj_RC -> r1585 [0.024843151515100505]
+[english] split
+[semantics] "split[theme=nmod!theme]"
+V_unacc_obj_RC -> r1586 [0.023241837743417502]
+[english] changed
+[semantics] "change[theme=nmod!theme]"
+V_unacc_obj_RC -> r1587 [0.021955269966808383]
+[english] snapped
+[semantics] "snap[theme=nmod!theme]"
+V_unacc_obj_RC -> r1588 [0.02090245596302799]
+[english] disintegrated
+[semantics] "disintegrate[theme=nmod!theme]"
+V_unacc_obj_RC -> r1589 [0.020027472958170183]
+[english] collapsed
+[semantics] "collapse[theme=nmod!theme]"
+V_unacc_obj_RC -> r1590 [0.019290571498074466]
+[english] decomposed
+[semantics] "decompose[theme=nmod!theme]"
+V_unacc_obj_RC -> r1591 [0.018662789655653128]
+[english] doubled
+[semantics] "double[theme=nmod!theme]"
+V_unacc_obj_RC -> r1592 [0.018122569172347593]
+[english] improved
+[semantics] "improve[theme=nmod!theme]"
+V_unacc_obj_RC -> r1593 [0.01765356043958695]
+[english] inflated
+[semantics] "inflate[theme=nmod!theme]"
+V_unacc_obj_RC -> r1594 [0.01724315855931527]
+[english] enlarged
+[semantics] "enlarge[theme=nmod!theme]"
+V_unacc_obj_RC -> r1595 [0.016881502890614384]
+[english] reddened
+[semantics] "redden[theme=nmod!theme]"
+
+
+V_trans_not_omissible_obj_RC -> r1596 [0.33402836011058906]
+[english] liked
+[semantics] "like[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1597 [0.13404078858765317]
+[english] helped
+[semantics] "help[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1598 [0.08118983449041972]
+[english] found
+[semantics] "find[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1599 [0.05825966977427891]
+[english] loved
+[semantics] "love[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1600 [0.045854068200707636]
+[english] poked
+[semantics] "poke[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1601 [0.03823290310401457]
+[english] admired
+[semantics] "admire[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1602 [0.03314541629748973]
+[english] adored
+[semantics] "adore[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1603 [0.02954399547074786]
+[english] appreciated
+[semantics] "appreciate[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1604 [0.026880623601982966]
+[english] missed
+[semantics] "miss[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1605 [0.024843151515100505]
+[english] respected
+[semantics] "respect[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1606 [0.023241837743417502]
+[english] threw
+[semantics] "throw[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1607 [0.021955269966808383]
+[english] tolerated
+[semantics] "tolerate[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1608 [0.02090245596302799]
+[english] valued
+[semantics] "value[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1609 [0.020027472958170183]
+[english] worshipped
+[semantics] "worship[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1610 [0.019290571498074466]
+[english] discovered
+[semantics] "discover[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1611 [0.018662789655653128]
+[english] held
+[semantics] "hold[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1612 [0.018122569172347593]
+[english] stabbed
+[semantics] "stab[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1613 [0.01765356043958695]
+[english] touched
+[semantics] "touch[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1614 [0.01724315855931527]
+[english] pierced
+[semantics] "pierce[theme=nmod!theme]"
+V_trans_not_omissible_obj_RC -> r1615 [0.016881502890614384]
+[english] tossed
+[semantics] "toss[theme=nmod!theme]"
+
+
+V_dat_obj_RC -> r1616 [0.33402836011058906]
+[english] gave
+[semantics] "give[theme=nmod!theme]"
+V_dat_obj_RC -> r1617 [0.13404078858765317]
+[english] lended
+[semantics] "lend[theme=nmod!theme]"
+V_dat_obj_RC -> r1618 [0.08118983449041972]
+[english] sold
+[semantics] "sell[theme=nmod!theme]"
+V_dat_obj_RC -> r1619 [0.05825966977427891]
+[english] offered
+[semantics] "offer[theme=nmod!theme]"
+V_dat_obj_RC -> r1620 [0.045854068200707636]
+[english] fed
+[semantics] "feed[theme=nmod!theme]"
+V_dat_obj_RC -> r1621 [0.03823290310401457]
+[english] passed
+[semantics] "pass[theme=nmod!theme]"
+V_dat_obj_RC -> r1622 [0.03314541629748973]
+[english] sent
+[semantics] "send[theme=nmod!theme]"
+V_dat_obj_RC -> r1623 [0.02954399547074786]
+[english] rented
+[semantics] "rent[theme=nmod!theme]"
+V_dat_obj_RC -> r1624 [0.026880623601982966]
+[english] served
+[semantics] "serve[theme=nmod!theme]"
+V_dat_obj_RC -> r1625 [0.024843151515100505]
+[english] awarded
+[semantics] "award[theme=nmod!theme]"
+V_dat_obj_RC -> r1626 [0.023241837743417502]
+[english] brought
+[semantics] "bring[theme=nmod!theme]"
+V_dat_obj_RC -> r1627 [0.021955269966808383]
+[english] handed
+[semantics] "hand[theme=nmod!theme]"
+V_dat_obj_RC -> r1628 [0.02090245596302799]
+[english] forwarded
+[semantics] "forward[theme=nmod!theme]"
+V_dat_obj_RC -> r1629 [0.020027472958170183]
+[english] promised
+[semantics] "promise[theme=nmod!theme]"
+V_dat_obj_RC -> r1630 [0.019290571498074466]
+[english] mailed
+[semantics] "mail[theme=nmod!theme]"
+V_dat_obj_RC -> r1631 [0.018662789655653128]
+[english] loaned
+[semantics] "loan[theme=nmod!theme]"
+V_dat_obj_RC -> r1632 [0.018122569172347593]
+[english] posted
+[semantics] "post[theme=nmod!theme]"
+V_dat_obj_RC -> r1633 [0.01765356043958695]
+[english] returned
+[semantics] "return[theme=nmod!theme]"
+V_dat_obj_RC -> r1634 [0.01724315855931527]
+[english] slipped
+[semantics] "slip[theme=nmod!theme]"
+V_dat_obj_RC -> r1635 [0.016881502890614384]
+[english] wired
+[semantics] "wire[theme=nmod!theme]"
 
 
 
 
-S! -> r1556(NP_animate_nsubj, VP_external) [1]
+
+
+
+
+S! -> r1636(NP_animate_nsubj, VP_external) [1]
 [english] *(?1, ?2)
 [semantics] pre_agent(?2, ?1)
 
-VP_external -> r1557(V_trans_omissible_targeted, NP_inanimate_dobj, Rel_clause) [1]
+VP_external -> r1637(V_unacc_obj_RC, NP_dobj, Rel_clause) [0.2]
 [english] *(?1, *(?2,?3))
-[semantics] nmod(theme(?1, ?2),?3)
+[semantics] pre_theme(nmod(?1,?3),?2)
+
+VP_external -> r1638(V_trans_omissible_obj_RC, NP_dobj, Rel_clause) [0.2]
+[english] *(?1, *(?2,?3))
+[semantics] pre_theme(nmod(?1,?3),?2)
 
 
+VP_external -> r1639(V_trans_not_omissible_obj_RC, NP_dobj, Rel_clause) [0.2]
+[english] *(?1, *(?2,?3))
+[semantics] pre_theme(nmod(?1,?3),?2)
 
-V_trans_omissible_targeted -> r1558 [1]
-[english] ate
-[semantics] "eat[theme=nmod!theme]"
+VP_external -> r1640(V_dat_obj_RC, NP_animate_iobj, NP_inanimate_dobj, Rel_clause) [0.1]
+[english] *(*(*(?1, ?2), ?3), ?4)
+[semantics] nmod(theme(recipient(?1, ?2),?3),?4)
 
-Rel_clause -> r1559(Rel_pron, NP_animate_nsubj, V_unacc) [1]
+
+VP_external -> r1641(V_dat_obj_RC, NP_inanimate_dobj, Rel_clause, PP_iobj) [0.1]
+[english] *(*(?1, *(?2, ?3)),?4)
+[semantics] recipient(nmod(theme(?1, ?2),?3),?4)
+
+VP_external -> r1642(V_cp_taking, C, S!) [0.2]
+[english] *(?1, *(?2, ?3))
+[semantics] ccomp(?1, ?3)
+
+Rel_clause -> r1643(Rel_pron, NP_animate_nsubj, V_unacc) [0.25]
 [english] *(*(?1, ?2), ?3)
-[semantics] pre_agent(pre_case(?3, ?1), ?2)
+[semantics] pre_agent(?3, ?2)
 
-NP_inanimate_dobj -> r1560(Det, N_common_inanimate_dobj) [1]
-[english] *(?1, ?2)
-[semantics] pre_det(?2, ?1)
+Rel_clause -> r1644(Rel_pron, NP_animate_nsubj, V_trans_omissible) [0.25]
+[english] *(*(?1, ?2), ?3)
+[semantics] pre_agent(?3, ?2)
 
-NP_animate_nsubj -> r1561(N_prop_nsubj) [0.5]
+Rel_clause -> r1645(Rel_pron, NP_animate_nsubj, V_trans_not_omissible) [0.25]
+[english] *(*(?1, ?2), ?3)
+[semantics] agent(?3, ?2)
+
+Rel_clause -> r1646(Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.25]
+[english] *(*(*(?1, ?2), ?3),?4)
+[semantics] recipient(agent(?3, ?2),?4)
+
+
+
+NP_dobj -> r1647(NP_animate_dobj) [0.5]
 [english] ?1
 [semantics] ?1
-NP_animate_nsubj -> r1562(Det, N_common_animate_nsubj) [0.5]
+
+NP_dobj -> r1648(NP_inanimate_dobj) [0.5]
+[english] ?1
+[semantics] ?1
+
+NP_animate_dobj -> r1649(Det, N_common_animate_dobj) [1]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
+
+NP_inanimate_dobj -> r1650(Det, N_common_inanimate_dobj) [1]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_nsubj -> r1651(N_prop_nsubj) [0.5]
+[english] ?1
+[semantics] ?1
+NP_animate_nsubj -> r1652(Det, N_common_animate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_iobj -> r1653(Det, N_common_animate_iobj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_iobj -> r1654(N_prop_iobj) [0.5]
+[english] ?1
+[semantics] ?1
+
+PP_iobj -> r1655 (P_iobj, NP_animate_iobj)[1]
+[english] *(?1, ?2)
+[semantics] pre_case(?2, ?1)
 
 
