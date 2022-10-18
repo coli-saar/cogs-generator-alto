@@ -5079,27 +5079,26 @@ V_dat_obj_RC -> r1635 [0.016881502890614384]
 
 
 
-
 S! -> r1636(NP_animate_nsubj, VP_external) [1]
 [english] *(?1, ?2)
 [semantics] pre_agent(?2, ?1)
 
 VP_external -> r1637(V_unacc_obj_RC, NP_dobj, Rel_clause) [0.2]
 [english] *(?1, *(?2,?3))
-[semantics] pre_theme(nmod(?1,?3),?2)
+[semantics] nmod(theme(?1,?2),?3)
 
 VP_external -> r1638(V_trans_omissible_obj_RC, NP_dobj, Rel_clause) [0.2]
 [english] *(?1, *(?2,?3))
-[semantics] pre_theme(nmod(?1,?3),?2)
+[semantics] nmod(theme(?1,?2),?3)
 
 
 VP_external -> r1639(V_trans_not_omissible_obj_RC, NP_dobj, Rel_clause) [0.2]
 [english] *(?1, *(?2,?3))
-[semantics] pre_theme(nmod(?1,?3),?2)
+[semantics] nmod(theme(?1,?2),?3)
 
 VP_external -> r1640(V_dat_obj_RC, NP_animate_iobj, NP_inanimate_dobj, Rel_clause) [0.1]
-[english] *(*(*(?1, ?2), ?3), ?4)
-[semantics] nmod(theme(recipient(?1, ?2),?3),?4)
+[english] *(?1,*(?2,*(?3,?4)))
+[semantics] nmod(theme(pre_recipient(?1,?2),?3),?4)
 
 
 VP_external -> r1641(V_dat_obj_RC, NP_inanimate_dobj, Rel_clause, PP_iobj) [0.1]
@@ -5122,44 +5121,48 @@ Rel_clause -> r1645(Rel_pron, NP_animate_nsubj, V_trans_not_omissible) [0.25]
 [english] *(*(?1, ?2), ?3)
 [semantics] agent(?3, ?2)
 
-Rel_clause -> r1646(Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.25]
+Rel_clause -> r1646(Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.125]
+[english] *(*(*(?1, ?2), ?3),?4)
+[semantics] recipient(agent(?3, ?2),?4)
+
+Rel_clause -> r1647(Rel_pron, NP_animate_nsubj, V_dat, NP_animate_iobj) [0.125]
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] recipient(agent(?3, ?2),?4)
 
 
 
-NP_dobj -> r1647(NP_animate_dobj) [0.5]
+NP_dobj -> r1648(NP_animate_dobj) [0.5]
 [english] ?1
 [semantics] ?1
 
-NP_dobj -> r1648(NP_inanimate_dobj) [0.5]
+NP_dobj -> r1649(NP_inanimate_dobj) [0.5]
 [english] ?1
 [semantics] ?1
 
-NP_animate_dobj -> r1649(Det, N_common_animate_dobj) [1]
+NP_animate_dobj -> r1650(Det, N_common_animate_dobj) [1]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
-NP_inanimate_dobj -> r1650(Det, N_common_inanimate_dobj) [1]
+NP_inanimate_dobj -> r1651(Det, N_common_inanimate_dobj) [1]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
-NP_animate_nsubj -> r1651(N_prop_nsubj) [0.5]
+NP_animate_nsubj -> r1652(N_prop_nsubj) [0.5]
 [english] ?1
 [semantics] ?1
-NP_animate_nsubj -> r1652(Det, N_common_animate_nsubj) [0.5]
+NP_animate_nsubj -> r1653(Det, N_common_animate_nsubj) [0.5]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
-NP_animate_iobj -> r1653(Det, N_common_animate_iobj) [0.5]
+NP_animate_iobj -> r1654(Det, N_common_animate_iobj) [0.5]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
-NP_animate_iobj -> r1654(N_prop_iobj) [0.5]
+NP_animate_iobj -> r1655(N_prop_iobj) [0.5]
 [english] ?1
 [semantics] ?1
 
-PP_iobj -> r1655 (P_iobj, NP_animate_iobj)[1]
+PP_iobj -> r1656 (P_iobj, NP_animate_iobj)[1]
 [english] *(?1, ?2)
 [semantics] pre_case(?2, ?1)
 
