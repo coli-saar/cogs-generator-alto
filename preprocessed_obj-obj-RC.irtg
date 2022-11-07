@@ -5074,96 +5074,155 @@ V_dat_obj_RC -> r1635 [0.016881502890614384]
 [semantics] "wire[theme=nmod!theme]"
 
 
+V_trans_not_omissible_pp_theme2theme_RC -> r1636 [0.33402836011058906]
+[english] liked
+[semantics] "like[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1637 [0.13404078858765317]
+[english] helped
+[semantics] "help[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1638 [0.08118983449041972]
+[english] found
+[semantics] "find[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1639 [0.05825966977427891]
+[english] loved
+[semantics] "love[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1640 [0.045854068200707636]
+[english] poked
+[semantics] "poke[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1641 [0.03823290310401457]
+[english] admired
+[semantics] "admire[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1642 [0.03314541629748973]
+[english] adored
+[semantics] "adore[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1643 [0.02954399547074786]
+[english] appreciated
+[semantics] "appreciate[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1644 [0.026880623601982966]
+[english] missed
+[semantics] "miss[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1645 [0.024843151515100505]
+[english] respected
+[semantics] "respect[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1646 [0.023241837743417502]
+[english] thrown
+[semantics] "throw[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1647 [0.021955269966808383]
+[english] tolerated
+[semantics] "tolerate[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1648 [0.02090245596302799]
+[english] valued
+[semantics] "value[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1649 [0.020027472958170183]
+[english] worshipped
+[semantics] "worship[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1650 [0.019290571498074466]
+[english] discovered
+[semantics] "discover[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1651 [0.018662789655653128]
+[english] held
+[semantics] "hold[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1652 [0.018122569172347593]
+[english] stabbed
+[semantics] "stab[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1653 [0.01765356043958695]
+[english] touched
+[semantics] "touch[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1654 [0.01724315855931527]
+[english] pierced
+[semantics] "pierce[theme=nmod!theme]"
+V_trans_not_omissible_pp_theme2theme_RC -> r1655 [0.016881502890614384]
+[english] tossed
+[semantics] "toss[theme=nmod!theme]"
 
 
 
 
 
-S! -> r1636(NP_animate_nsubj, VP_external) [1]
+
+S! -> r1656(NP_animate_nsubj, VP_external) [1]
 [english] *(?1, ?2)
 [semantics] pre_agent(?2, ?1)
 
-VP_external -> r1637(V_unacc_obj_RC, NP_dobj, Rel_clause) [0.2]
+VP_external -> r1657(V_unacc_obj_RC, NP_dobj, Rel_clause) [0.2]
 [english] *(?1, *(?2,?3))
 [semantics] nmod(theme(?1,?2),?3)
 
-VP_external -> r1638(V_trans_omissible_obj_RC, NP_dobj, Rel_clause) [0.2]
+VP_external -> r1658(V_trans_omissible_obj_RC, NP_dobj, Rel_clause) [0.2]
 [english] *(?1, *(?2,?3))
 [semantics] nmod(theme(?1,?2),?3)
 
-
-VP_external -> r1639(V_trans_not_omissible_obj_RC, NP_dobj, Rel_clause) [0.2]
+VP_external -> r1659(V_trans_not_omissible_obj_RC, NP_dobj, Rel_clause) [0.2]
 [english] *(?1, *(?2,?3))
 [semantics] nmod(theme(?1,?2),?3)
 
-VP_external -> r1640(V_dat_obj_RC, NP_animate_iobj, NP_inanimate_dobj, Rel_clause) [0.1]
+VP_external -> r1660(V_dat_obj_RC, NP_animate_iobj, NP_inanimate_dobj, Rel_clause) [0.1]
 [english] *(?1,*(?2,*(?3,?4)))
 [semantics] nmod(theme(pre_recipient(?1,?2),?3),?4)
 
 
-VP_external -> r1641(V_dat_obj_RC, NP_inanimate_dobj, Rel_clause, PP_iobj) [0.1]
+VP_external -> r1661(V_dat_obj_RC, NP_inanimate_dobj, Rel_clause, PP_iobj) [0.1]
 [english] *(*(?1, *(?2, ?3)),?4)
 [semantics] recipient(nmod(theme(?1, ?2),?3),?4)
 
-VP_external -> r1642(V_cp_taking, C, S!) [0.2]
+VP_external -> r1662(V_cp_taking, C, S!) [0.2]
 [english] *(?1, *(?2, ?3))
 [semantics] ccomp(?1, ?3)
 
-Rel_clause -> r1643(Rel_pron, NP_animate_nsubj, V_unacc) [0.25]
+Rel_clause -> r1663(Rel_pron, NP_animate_nsubj, V_unacc) [0.25]
 [english] *(*(?1, ?2), ?3)
-[semantics] pre_agent(?3, ?2)
+[semantics] pre_case(pre_agent(?3, ?2),?1)
 
-Rel_clause -> r1644(Rel_pron, NP_animate_nsubj, V_trans_omissible) [0.25]
+Rel_clause -> r1664(Rel_pron, NP_animate_nsubj, V_trans_omissible) [0.25]
 [english] *(*(?1, ?2), ?3)
-[semantics] pre_agent(?3, ?2)
+[semantics] pre_case(pre_agent(?3, ?2),?1)
 
-Rel_clause -> r1645(Rel_pron, NP_animate_nsubj, V_trans_not_omissible) [0.25]
+Rel_clause -> r1665(Rel_pron, NP_animate_nsubj, V_trans_not_omissible) [0.25]
 [english] *(*(?1, ?2), ?3)
-[semantics] agent(?3, ?2)
+[semantics] pre_case(pre_agent(?3, ?2),?1)
 
-Rel_clause -> r1646(Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.125]
+Rel_clause -> r1666(Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.125]
 [english] *(*(*(?1, ?2), ?3),?4)
-[semantics] recipient(agent(?3, ?2),?4)
+[semantics] pre_case(recipient(agent(?3, ?2),?4),?1)
 
-Rel_clause -> r1647(Rel_pron, NP_animate_nsubj, V_dat, NP_animate_iobj) [0.125]
+Rel_clause -> r1667(Rel_pron, NP_animate_nsubj, V_dat, NP_animate_iobj) [0.125]
 [english] *(*(*(?1, ?2), ?3),?4)
-[semantics] recipient(agent(?3, ?2),?4)
+[semantics] pre_case(recipient(agent(?3, ?2),?4),?1)
 
 
 
-NP_dobj -> r1648(NP_animate_dobj) [0.5]
+NP_dobj -> r1668(NP_animate_dobj) [0.5]
 [english] ?1
 [semantics] ?1
 
-NP_dobj -> r1649(NP_inanimate_dobj) [0.5]
+NP_dobj -> r1669(NP_inanimate_dobj) [0.5]
 [english] ?1
 [semantics] ?1
 
-NP_animate_dobj -> r1650(Det, N_common_animate_dobj) [1]
+NP_animate_dobj -> r1670(Det, N_common_animate_dobj) [1]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
-NP_inanimate_dobj -> r1651(Det, N_common_inanimate_dobj) [1]
+NP_inanimate_dobj -> r1671(Det, N_common_inanimate_dobj) [1]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
-NP_animate_nsubj -> r1652(N_prop_nsubj) [0.5]
+NP_animate_nsubj -> r1672(N_prop_nsubj) [0.5]
 [english] ?1
 [semantics] ?1
-NP_animate_nsubj -> r1653(Det, N_common_animate_nsubj) [0.5]
+NP_animate_nsubj -> r1673(Det, N_common_animate_nsubj) [0.5]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
-NP_animate_iobj -> r1654(Det, N_common_animate_iobj) [0.5]
+NP_animate_iobj -> r1674(Det, N_common_animate_iobj) [0.5]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
-NP_animate_iobj -> r1655(N_prop_iobj) [0.5]
+NP_animate_iobj -> r1675(N_prop_iobj) [0.5]
 [english] ?1
 [semantics] ?1
 
-PP_iobj -> r1656 (P_iobj, NP_animate_iobj)[1]
+PP_iobj -> r1676 (P_iobj, NP_animate_iobj)[1]
 [english] *(?1, ?2)
 [semantics] pre_case(?2, ?1)
-
 
