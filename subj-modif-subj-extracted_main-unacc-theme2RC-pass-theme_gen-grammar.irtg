@@ -1,0 +1,72 @@
+{## Subsets of main grammar that only generate
+subject-extracted clauses that modify NP in subject position
+argument sharing:  main unaccusative theme  --> RC passive theme
+##}
+
+S! -> r{{ cnt.next() }}(NP_inanimate_nsubj, Rel_clause_passive, V_unacc_theme_RC_theme) [1]
+[english] *(*(?1, ?2),?3)
+[semantics] pre_theme(pre_nmod(?3, ?2),?1)
+
+NP_inanimate_nsubj -> r{{ cnt.next() }}(Det, N_common_inanimate_nsubj) [1]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+VP_unacc_theme_RC_theme -> r{{ cnt.next() }}(V_unacc_theme_RC_theme) [1]
+[english]  ?1
+[semantics] ?1
+
+
+{# passives RC #}
+Rel_clause_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_trans_not_omissible_pp) [0.125]
+[english] *(*(?1, ?2),?3)
+[semantics] ?3
+
+Rel_clause_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_trans_not_omissible_pp, BY,NP_animate_nsubj) [0.125]
+[english] *(*(*(?1, ?2),*(?3,?4)),?5)
+[semantics] agent(?3,?5)
+
+Rel_clause_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_trans_omissible_pp) [0.125]
+[english] *(*(?1, ?2),?3)
+[semantics] ?3
+
+Rel_clause_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_trans_omissible_pp, BY,NP_animate_nsubj) [0.125]
+[english] *(?1,*(*(?2, ?3),*(?4,?5)))
+[semantics] agent(?3,?5)
+
+Rel_clause_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_unacc_pp) [0.125]
+[english] *(*(?1, ?2),?3)
+[semantics] ?3
+
+Rel_clause_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_unacc_pp, BY,NP_animate_nsubj) [0.125]
+[english] *(?1,*(*(?2, ?3),*(?4,?5)))
+[semantics] agent(?3,?5)
+
+Rel_clause_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_dat_pp, PP_iobj) [0.125]
+[english] *(*(*(?1, ?2),?3),?4)
+[semantics] recipient(?3,?4)
+
+Rel_clause_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_dat_pp, PP_iobj, BY,NP_animate_nsubj) [0.125]
+[english] *(?1,*(*(*(?2, ?3),?4),*(?5,?6)))
+[semantics] agent(recipient(?3,?4),?6)
+
+NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
+[english] ?1
+[semantics] ?1
+
+NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+PP_iobj -> r{{ cnt.next() }} (P_iobj, NP_animate_iobj)[1]
+[english] *(?1, ?2)
+[semantics] pre_case(?2, ?1)
+
+NP_animate_iobj -> r{{ cnt.next() }}(Det, N_common_animate_iobj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_iobj -> r{{ cnt.next() }}(N_prop_iobj) [0.5]
+[english] ?1
+[semantics] ?1
+
+
