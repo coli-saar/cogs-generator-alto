@@ -463,6 +463,12 @@ V_trans_omissible_theme_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
 [semantics] "{{ verbs_lemmas[word] }}[theme=nmod!agent]"
 {% endfor %}
 
+{% for word, prob in V_trans_omissible|zipf -%}
+V_trans_omissible_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
+{% endfor %}
+
 {% for word, prob in V_unacc|zipf -%}
 V_unacc_obj_RC -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
@@ -511,8 +517,20 @@ V_trans_not_omissible_theme_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
 [semantics] "{{ verbs_lemmas[word] }}[theme=nmod!agent]"
 {% endfor %}
 
+{% for word, prob in V_trans_not_omissible|zipf -%}
+V_trans_not_omissible_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
+{% endfor %}
+
 {% for word, prob in V_dat|zipf -%}
 V_dat_obj_RC -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
+{% endfor %}
+
+{% for word, prob in V_dat|zipf -%}
+V_dat_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
 {% endfor %}
