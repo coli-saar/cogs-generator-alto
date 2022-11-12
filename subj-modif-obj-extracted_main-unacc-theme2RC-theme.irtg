@@ -3,7 +3,7 @@ subject-extracted clauses that modify NP in subject position
 argument sharing: main unaccusative theme --> RC agent
 ##}
 
-S! -> r{{ cnt.next() }}(NP_unacc_nsubj_main, Rel_clause, V_unacc_theme_RC_theme) [0.04]
+S! -> r{{ cnt.next() }}(NP_unacc_nsubj_main, Rel_clause, V_unacc_theme_RC_theme) [1]
 [english] *(*(?1, ?2),?3)
 [semantics] pre_theme(pre_nmod(?3, ?2),?1)
 
