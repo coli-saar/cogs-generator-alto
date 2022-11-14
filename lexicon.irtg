@@ -446,12 +446,6 @@ Rel_pron -> r{{ cnt.next() }} [1]
 {# verbs taking relative clauses #}
 
 {% for word, prob in V_trans_omissible|zipf -%}
-V_trans_omissible_obj_RC -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_trans_omissible|zipf -%}
 V_trans_omissible_theme_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] "{{ verbs_lemmas[word] }}[theme=nmod!recipient]"
@@ -465,12 +459,6 @@ V_trans_omissible_theme_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
 
 {% for word, prob in V_trans_omissible|zipf -%}
 V_trans_omissible_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_unacc|zipf -%}
-V_unacc_obj_RC -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
 {% endfor %}
@@ -500,12 +488,6 @@ V_unacc_agent_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
 {% endfor %}
 
 {% for word, prob in V_trans_not_omissible|zipf -%}
-V_trans_not_omissible_obj_RC -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_trans_not_omissible|zipf -%}
 V_trans_not_omissible_theme_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] "{{ verbs_lemmas[word] }}[theme=nmod!recipient]"
@@ -519,12 +501,6 @@ V_trans_not_omissible_theme_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
 
 {% for word, prob in V_trans_not_omissible|zipf -%}
 V_trans_not_omissible_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_dat|zipf -%}
-V_dat_obj_RC -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
 {% endfor %}
