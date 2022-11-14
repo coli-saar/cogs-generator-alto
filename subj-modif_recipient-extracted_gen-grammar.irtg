@@ -1,5 +1,10 @@
 {## Subsets of main grammar that only generate
-recipient-extracted clauses that modify NP in subject position ##}
+recipient-extracted clauses that modify NP in subject position
+argument sharing:
+- main agent --> RC recipient
+- main theme --> RC recipient
+- main recipient --> RC recipient
+##}
 
 S! -> r{{ cnt.next() }}(NP_animate_nsubj_main, Rel_clause_dat_passive, VP_main_agent_RC_recipient) [0.85]
 [english] *(*(?1, ?2),?3)
@@ -56,11 +61,11 @@ VP_main_agent_RC_recipient -> r{{ cnt.next() }}(V_trans_omissible_agent_RC_recip
 VP_main_agent_RC_recipient -> r{{ cnt.next() }}(V_trans_not_omissible_agent_RC_recipient , NP_dobj) [0.15]
 [english]  *(?1,?2)
 [semantics] theme(?1,?2)
-
+{#
 VP_main_agent_RC_recipient -> r{{ cnt.next() }}(V_inf_taking, INF, V_inf)[0.1]
 [english] *(?1, *(?2, ?3))
 [semantics] xcomp(?1, ?3)
-
+#}
 VP_main_agent_RC_recipient -> r{{ cnt.next() }}(V_dat_agent_RC_recipient , NP_animate_iobj, NP_inanimate_dobj) [0.1]
 [english] *(*(?1, ?2), ?3)
 [semantics] theme(recipient(?1, ?2), ?3)

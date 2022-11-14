@@ -64,11 +64,11 @@ VP_main_agent_RC_agent -> r{{ cnt.next() }}(V_cp_taking_agent_RC_agent, C, S_int
 VP_main_agent_RC_agent -> r{{ cnt.next() }}(V_unerg_agent_RC_agent) [0.1]
 [english] ?1
 [semantics] ?1
-
+{#
 VP_main_agent_RC_agent -> r{{ cnt.next() }}(V_inf_taking, INF, V_inf)[0.1]
 [english] *(?1, *(?2, ?3))
 [semantics] xcomp(?1, ?3)
-
+#}
 VP_main_agent_RC_agent -> r{{ cnt.next() }}(V_unacc_agent_RC_agent, NP_dobj) [0.15]
 [english]  *(?1,?2)
 [semantics] theme(?1,?2)
