@@ -678,3 +678,9 @@ V_dat_agent_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] "{{ verbs_lemmas[word] }}[agent=nmod!recipient]"
 {% endfor %}
+
+{% for word, prob in V_dat|zipf -%}
+V_dat_recipient_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] "{{ verbs_lemmas[word] }}[recipient=nmod!agent]"
+{% endfor %}
