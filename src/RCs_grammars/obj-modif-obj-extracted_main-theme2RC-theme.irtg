@@ -1,0 +1,107 @@
+{## Subsets of main grammar that only generate
+object-extracted clauses that modify NP in object position
+argument sharing: main theme --> RC theme
+##}
+
+S! -> r{{ cnt.next() }}(NP_animate_nsubj, VP_main_theme_RC_theme) [1]
+[english] *(?1, ?2)
+[semantics] pre_agent(?2, ?1)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_unacc_theme_RC_theme, NP_dobj, Rel_clause) [0.15]
+[english] *(?1, *(?2,?3))
+[semantics] nmod(theme(?1,?2),?3)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_trans_omissible_theme_RC_theme, NP_dobj, Rel_clause) [0.15]
+[english] *(?1, *(?2,?3))
+[semantics] nmod(theme(?1,?2),?3)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_trans_not_omissible_theme_RC_theme, NP_dobj, Rel_clause) [0.15]
+[english] *(?1, *(?2,?3))
+[semantics] nmod(theme(?1,?2),?3)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_unacc_theme_RC_theme, NP_inanimate_dobj, Rel_clause_dat) [0.083]
+[english] *(?1, *(?2,?3))
+[semantics] nmod(theme(?1,?2),?3)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_trans_omissible_theme_RC_theme, NP_inanimate_dobj, Rel_clause_dat) [0.083]
+[english] *(?1, *(?2,?3))
+[semantics] nmod(theme(?1,?2),?3)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_trans_not_omissible_theme_RC_theme, NP_inanimate_dobj, Rel_clause_dat) [0.084]
+[english] *(?1, *(?2,?3))
+[semantics] nmod(theme(?1,?2),?3)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_dat_theme_RC_theme, NP_animate_iobj, NP_inanimate_dobj, Rel_clause) [0.1]
+[english] *(?1,*(?2,*(?3,?4)))
+[semantics] nmod(theme(pre_recipient(?1,?2),?3),?4)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_dat_theme_RC_theme, NP_inanimate_dobj, Rel_clause, PP_iobj) [0.1]
+[english] *(*(?1, *(?2, ?3)),?4)
+[semantics] recipient(nmod(theme(?1, ?2),?3),?4)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_dat_theme_RC_theme, NP_animate_iobj, NP_inanimate_dobj, Rel_clause_dat) [0.05]
+[english] *(?1,*(?2,*(?3,?4)))
+[semantics] nmod(theme(pre_recipient(?1,?2),?3),?4)
+
+VP_main_theme_RC_theme -> r{{ cnt.next() }}(V_dat_theme_RC_theme, NP_inanimate_dobj, Rel_clause_dat, PP_iobj) [0.05]
+[english] *(*(?1, *(?2, ?3)),?4)
+[semantics] recipient(nmod(theme(?1, ?2),?3),?4)
+
+
+Rel_clause -> r{{ cnt.next() }}(Rel_pron, NP_animate_nsubj, V_unacc) [0.25]
+[english] *(*(?1, ?2), ?3)
+[semantics] pre_agent(?3, ?2)
+
+Rel_clause -> r{{ cnt.next() }}(Rel_pron, NP_animate_nsubj, V_trans_omissible) [0.25]
+[english] *(*(?1, ?2), ?3)
+[semantics] pre_agent(?3, ?2)
+
+Rel_clause -> r{{ cnt.next() }}(Rel_pron, NP_animate_nsubj, V_trans_not_omissible) [0.25]
+[english] *(*(?1, ?2), ?3)
+[semantics] pre_agent(?3, ?2)
+
+Rel_clause_dat -> r{{ cnt.next() }}(Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.125]
+[english] *(*(*(?1, ?2), ?3),?4)
+[semantics] recipient(agent(?3, ?2),?4)
+
+Rel_clause_dat -> r{{ cnt.next() }}(Rel_pron, NP_animate_nsubj, V_dat, NP_animate_iobj) [0.125]
+[english] *(*(*(?1, ?2), ?3),?4)
+[semantics] recipient(agent(?3, ?2),?4)
+
+{## Noun phrases ##}
+
+NP_dobj -> r{{ cnt.next() }}(NP_animate_dobj) [0.5]
+[english] ?1
+[semantics] ?1
+
+NP_dobj -> r{{ cnt.next() }}(NP_inanimate_dobj) [0.5]
+[english] ?1
+[semantics] ?1
+
+NP_animate_dobj -> r{{ cnt.next() }}(Det, N_common_animate_dobj) [1]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_inanimate_dobj -> r{{ cnt.next() }}(Det, N_common_inanimate_dobj) [1]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
+[english] ?1
+[semantics] ?1
+NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_iobj -> r{{ cnt.next() }}(Det, N_common_animate_iobj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_iobj -> r{{ cnt.next() }}(N_prop_iobj) [0.5]
+[english] ?1
+[semantics] ?1
+
+PP_iobj -> r{{ cnt.next() }} (P_iobj, NP_animate_iobj)[1]
+[english] *(?1, ?2)
+[semantics] pre_case(?2, ?1)
+

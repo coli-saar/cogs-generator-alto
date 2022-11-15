@@ -1,0 +1,36 @@
+{## Subsets of main grammar that only generate
+subject-extracted clauses that modify NP in subject position
+argument sharing: main unaccusative theme --> RC theme
+##}
+
+S! -> r{{ cnt.next() }}(NP_unacc_nsubj_main, Rel_clause, V_unacc_theme_RC_theme) [1]
+[english] *(*(?1, ?2),?3)
+[semantics] pre_theme(pre_nmod(?3, ?2),?1)
+
+NP_unacc_nsubj_main -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_unacc_nsubj_main -> r{{ cnt.next() }}(Det, N_common_inanimate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+Rel_clause -> r{{ cnt.next() }}(Rel_pron, NP_animate_nsubj, V_unacc) [0.33]
+[english] *(*(?1, ?2), ?3)
+[semantics] pre_agent(?3, ?2)
+
+Rel_clause -> r{{ cnt.next() }}(Rel_pron, NP_animate_nsubj, V_trans_omissible) [0.33]
+[english] *(*(?1, ?2), ?3)
+[semantics] pre_agent(?3, ?2)
+
+Rel_clause -> r{{ cnt.next() }}(Rel_pron, NP_animate_nsubj, V_trans_not_omissible) [0.34]
+[english] *(*(?1, ?2), ?3)
+[semantics] pre_agent(?3, ?2)
+
+NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
+[english] ?1
+[semantics] ?1
