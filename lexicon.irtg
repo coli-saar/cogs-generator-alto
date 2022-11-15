@@ -690,3 +690,9 @@ V_dat_recipient_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] "{{ verbs_lemmas[word] }}[recipient=nmod!theme]"
 {% endfor %}
+
+{% for word, prob in V_dat|zipf -%}
+V_dat_recipient_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ word }}
+[semantics] "{{ verbs_lemmas[word] }}[recipient=nmod!recipient]"
+{% endfor %}
