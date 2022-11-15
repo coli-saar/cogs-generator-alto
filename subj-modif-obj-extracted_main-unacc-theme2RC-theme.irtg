@@ -1,6 +1,6 @@
 {## Subsets of main grammar that only generate
 subject-extracted clauses that modify NP in subject position
-argument sharing: main unaccusative theme --> RC agent
+argument sharing: main unaccusative theme --> RC theme
 ##}
 
 S! -> r{{ cnt.next() }}(NP_unacc_nsubj_main, Rel_clause, V_unacc_theme_RC_theme) [1]

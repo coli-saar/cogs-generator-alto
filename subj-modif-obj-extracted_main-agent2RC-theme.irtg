@@ -52,7 +52,7 @@ VP_main_agent_RC_theme -> r{{ cnt.next() }}(V_dat_agent_RC_theme, NP_inanimate_d
 [english] *(*(?1, ?2), ?3)
 [semantics] recipient(theme(?1, ?2), ?3)
 
-{# require post processing to add the missing shared theme argument
+{#
 VP_main_agent_RC_theme -> r{{ cnt.next() }}(V_inf_taking, INF, V_inf)[0.1]
 [english] *(?1, *(?2, ?3))
 [semantics] xcomp(?1, ?3)
