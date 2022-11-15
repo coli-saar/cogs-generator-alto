@@ -1,0 +1,50 @@
+{## Subsets of main grammar that only generate
+recipient-extracted clauses that modify NP in subject position
+argument sharing:
+- main recipient --> RC recipient
+##}
+
+S! -> r{{ cnt.next() }}(NP_animate_nsubj_main, Rel_clause_dat_passive, VP_dat_passive_recipient_RC_recipient) [1]
+[english] *(*(?1, ?2),?3)
+[semantics] pre_recipient(pre_nmod(?3, ?2),?1)
+
+NP_animate_nsubj_main -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [1]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+Rel_clause_dat_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_dat_pp, NP_inanimate_dobj) [0.5]
+[english] *(*(*(?1, ?2), ?3),?4)
+[semantics] theme(?3, ?4)
+
+Rel_clause_dat_passive -> r{{ cnt.next() }}(Rel_pron, AUX, V_dat_pp, NP_inanimate_dobj, BY, NP_animate_nsubj) [0.5]
+[english] *(?1,*(*(*(?2, ?3),?4),*(?5,?6)))
+[semantics] agent(theme(?3,?4),?6)
+
+VP_dat_passive_recipient_RC_recipient -> r{{ cnt.next() }}(AUX, V_dat_pp_recipient_RC_recipient, NP_inanimate_dobj) [0.5]
+[english] *(*(?1, ?2),?3)
+[semantics] theme(?2,?3)
+
+VP_dat_passive_recipient_RC_recipient -> r{{ cnt.next() }}(AUX, V_dat_pp_recipient_RC_recipient, NP_inanimate_dobj, BY, NP_animate_nsubj) [0.5]
+[english] *(*(*(?1, ?2),?3),*(?4,?5))
+[semantics] agent(theme(?2,?3),?5)
+
+NP_animate_dobj -> r{{ cnt.next() }}(Det, N_common_animate_dobj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_dobj -> r{{ cnt.next() }}(N_prop_dobj) [0.5]
+[english] ?1
+[semantics] ?1
+
+
+NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
+[english] ?1
+[semantics] ?1
+
+NP_inanimate_dobj -> r{{ cnt.next() }}(Det, N_common_inanimate_dobj) [1]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
