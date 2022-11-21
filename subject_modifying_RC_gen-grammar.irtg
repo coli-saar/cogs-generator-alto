@@ -39,16 +39,16 @@ S! -> r{{ cnt.next() }}(NP_animate_nsubj, VP_cp) [0.05]
 [english] *(?1, ?2)
 [semantics] pre_agent(?2, ?1)
 
-VP_cp -> S_subj_modif_embedded_cp_V_E{{ cnt.next() }}(V_cp_taking, C, S!) [1]
+VP_cp -> I_embedded_cp_V_F{{ cnt.next() }}(V_cp_taking, C, S!) [1]
 [english] *(?1, *(?2, ?3))
 [semantics] ccomp(?1, ?3)
 
 {# subject extracted RCs #}
-NP_animate_nsubj_main_RC_modified -> S_RC_agent_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_agent) [0.45]
+NP_animate_nsubj_main_RC_modified -> S_RC_agent_subj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_agent) [0.45]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, agent(?3,?2))
 
-NP_animate_nsubj_main_RC_modified -> S_RC_unacc_theme_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_unacc_theme) [0.05]
+NP_animate_nsubj_main_RC_modified -> S_RC_unacc_theme_subj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_unacc_theme) [0.05]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, theme(?3,?2))
 
@@ -80,7 +80,7 @@ VP_RC_agent -> r{{ cnt.next() }}(V_trans_not_omissible, NP_dobj) [0.10525]
 [english] *(?1, ?2)
 [semantics] theme(?1, ?2)
 
-VP_RC_agent -> S_RC_control_V_E{{ cnt.next() }}(V_inf_taking, INF, V_inf)[0.10525]
+VP_RC_agent -> I_RC_control_V_F{{ cnt.next() }}(V_inf_taking, INF, V_inf)[0.10525]
 [english] *(?1, *(?2, ?3))
 [semantics] xcomp(?1, ?3)
 
@@ -100,58 +100,58 @@ VP_RC_agent -> r{{ cnt.next() }}(V_dat, NP_animate_iobj, NP_inanimate_dobj) [0.1
  - embedded CP: the boy that said that Emma believed that
    the cat slept found the guy
   #}
-VP_RC_agent -> S_RC_cp_V_E{{ cnt.next() }}(V_cp_taking, C, S_internal) [0.158]
+VP_RC_agent -> I_RC_cp_V_F{{ cnt.next() }}(V_cp_taking, C, S_internal) [0.158]
 [english] *(?1, *(?2, ?3))
 [semantics] ccomp(?1, ?3)
 
-VP_RC_inanimate_subj_extracted_theme -> S_Rel_unacc_theme_E{{ cnt.next() }}(V_unacc) [0.111]
+VP_RC_inanimate_subj_extracted_theme -> S_RC_unacc_theme_subj_extracted_E{{ cnt.next() }}(V_unacc) [0.111]
 [english] ?1
 [semantics] ?1
 
 {# passives #}
-VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_E{{ cnt.next() }}(AUX, V_trans_not_omissible_pp) [0.111]
+VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_subj_extracted_E{{ cnt.next() }}(AUX, V_trans_not_omissible_pp) [0.111]
 [english] *(?1, ?2)
 [semantics] ?2
 
-VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_E{{ cnt.next() }}(AUX, V_trans_not_omissible_pp, BY,NP_animate_nsubj) [0.111]
+VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_subj_extracted_E{{ cnt.next() }}(AUX, V_trans_not_omissible_pp, BY,NP_animate_nsubj) [0.111]
 [english] *(*(?1, ?2),*(?3,?4))
 [semantics] agent(?2,?4)
 
-VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_E{{ cnt.next() }}(AUX, V_trans_omissible_pp) [0.111]
+VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_subj_extracted_E{{ cnt.next() }}(AUX, V_trans_omissible_pp) [0.111]
 [english] *(?1, ?2)
 [semantics] ?2
 
-VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_E{{ cnt.next() }}(AUX, V_trans_omissible_pp, BY,NP_animate_nsubj) [0.111]
+VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_subj_extracted_E{{ cnt.next() }}(AUX, V_trans_omissible_pp, BY,NP_animate_nsubj) [0.111]
 [english] *(*(?1, ?2),*(?3,?4))
 [semantics] agent(?2,?4)
 
-VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_E{{ cnt.next() }}(AUX,V_unacc_pp) [0.111]
+VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_subj_extracted_E{{ cnt.next() }}(AUX,V_unacc_pp) [0.111]
 [english] *(?1, ?2)
 [semantics] ?2
 
-VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_E{{ cnt.next() }}(AUX, V_unacc_pp, BY,NP_animate_nsubj) [0.111]
+VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_subj_extracted_E{{ cnt.next() }}(AUX, V_unacc_pp, BY,NP_animate_nsubj) [0.111]
 [english] *(*(?1, ?2),*(?3,?4))
 [semantics] agent(?2,?4)
 
-VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_E{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj) [0.112]
+VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_subj_extracted_E{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj) [0.112]
 [english] *(*(?1, ?2),?3)
 [semantics] recipient(?2,?3)
 
-VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_E{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj, BY, NP_animate_nsubj) [0.111]
+VP_RC_inanimate_subj_extracted_theme -> S_RC_pass_theme_subj_extracted_E{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj, BY, NP_animate_nsubj) [0.111]
 [english] *(*(*(?1, ?2),?3),*(?4,?5))
 [semantics] agent(recipient(?2,?3),?5)
 
 
 {# object extracted RCs #}
-NP_animate_nsubj_main_RC_modified -> S_RC_theme_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_object_extracted_theme) [0.5]
+NP_animate_nsubj_main_RC_modified -> S_RC_theme_dobj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_object_extracted_theme) [0.5]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, theme(?3,?2))
 
-NP_inanimate_nsubj_main_RC_modified -> S_RC_theme_E{{ cnt.next() }}(NP_inanimate_nsubj_main, Rel_pron, VP_RC_object_extracted_theme) [0.3]
+NP_inanimate_nsubj_main_RC_modified -> S_RC_theme_dobj_extracted_E{{ cnt.next() }}(NP_inanimate_nsubj_main, Rel_pron, VP_RC_object_extracted_theme) [0.3]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, theme(?3,?2))
 
-NP_inanimate_nsubj_main_RC_modified -> S_RC_dat_theme_E{{ cnt.next() }}(NP_inanimate_nsubj_main, Rel_pron, VP_dat_RC_theme) [0.2]
+NP_inanimate_nsubj_main_RC_modified -> S_RC_dat_theme_dobj_extracted_E{{ cnt.next() }}(NP_inanimate_nsubj_main, Rel_pron, VP_dat_RC_theme) [0.2]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, theme(?3,?2))
 
@@ -255,7 +255,7 @@ VP_main_anim_subj -> r{{ cnt.next() }}(V_trans_not_omissible, NP_dobj) [0.10525]
 [english] *(?1, ?2)
 [semantics] theme(?1, ?2)
 
-VP_main_anim_subj -> S_main_control_V_E{{ cnt.next() }}(V_inf_taking, INF, V_inf)[0.10525]
+VP_main_anim_subj -> I_main_control_V_F{{ cnt.next() }}(V_inf_taking, INF, V_inf)[0.10525]
 [english] *(?1, *(?2, ?3))
 [semantics] xcomp(?1, ?3)
 
@@ -273,7 +273,7 @@ the boy that baked a cake said that sth V-passive
 the boy that baked a cake believed that the girl said that the guy smiled
 - restriction: one RC modifying subject per sentence (e.g. the boy that baked a cake believed that the girl that ate a donut smiled)
 #}
-VP_main_anim_subj -> S_main_cp_V_E{{ cnt.next() }}(V_cp_taking, C, S_internal) [0.158]
+VP_main_anim_subj -> I_main_cp_V_F{{ cnt.next() }}(V_cp_taking, C, S_internal) [0.158]
 [english] *(?1, *(?2, ?3))
 [semantics] ccomp(?1, ?3)
 
