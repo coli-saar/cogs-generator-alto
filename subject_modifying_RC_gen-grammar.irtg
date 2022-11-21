@@ -16,6 +16,7 @@ subject extracted:
     - unaccusative theme --> RC agent # the boy that saw the man rolled
     - unaccusative theme --> RC passive theme # the boy that was found by Emma rolled
     - unaccusative theme --> RC unaccusative theme # the boy that froze rolled
+embedded RC allowed: The student said that the boy that the man saw smiled
 ##}
 
 S! -> S_subj_modif_main_agent_E{{ cnt.next() }}(NP_animate_nsubj_main_RC_modified, VP_main_anim_subj) [0.4]
