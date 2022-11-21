@@ -1,14 +1,14 @@
 {## Subsets of main grammar that only generate
 RC modification in object position
 object extracted:
-- main theme --> RC theme
-- main theme --> RC dat theme
-- main dat theme --> RC theme
-- main dat theme --> RC dat theme
+    - main theme --> RC theme  # Emma saw the boy that the guy found
+    - main theme --> RC dat theme  # Emma saw the cake that the boy gave to the cat
+    - main dat theme --> RC theme  # Emma gave the girl the cake that the guy found
+    - main dat theme --> RC dat theme # Emma gave the cake that the boy sold to Liam to the cat
 subject extracted:
-- main theme --> RC agent
-- main theme --> RC unaccusative theme
-- main theme --> RC passive theme
+    - main theme --> RC agent  # Emma saw the boy that found the cat
+    - main theme --> RC unaccusative theme # Emma saw the boy that froze
+    - main theme --> RC passive theme  # Emma saw the boy that was given a cake
 ##}
 
 

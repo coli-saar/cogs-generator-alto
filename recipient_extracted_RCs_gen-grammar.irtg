@@ -1,11 +1,12 @@
 {## Subsets of main grammar that only generate
 recipient-extracted clauses that modify NP in both object and subject position
 object position NP:
-- main theme --> RC recipient # the boy found the guy that was given a cake
+    - main theme --> RC recipient # the boy found the guy that was given a cake [0.45]
 subject position NP:
-- main agent --> RC recipient # the boy that was given a cake found the cat
-- main unaccusative theme --> RC recipient # the cat that was given a cake rolled
-- main passive recipient --> RC recipient # the cat that was sold a cake was offered a donut
+    - main agent --> RC recipient # the boy that was given a cake found the cat [0.36]
+    - main unaccusative theme --> RC recipient # the cat that was given a cake rolled [0.04]
+    - main passive recipient --> RC recipient # the cat that was sold a cake was offered a donut [0.05]
+embedded RC allowed: Emma said that the boy that was given a cake found the cat [0.1]
 ##}
 
 

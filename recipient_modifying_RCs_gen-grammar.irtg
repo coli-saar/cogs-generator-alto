@@ -1,12 +1,12 @@
 {## Subsets of main grammar that only generate
 RC clauses that modify NP in recipient position
 object extracted RCs:
-- main recipient --> RC theme # the boy gave a cake to the cat that the girl saw  [0.5]
+    - main recipient --> RC theme # the boy gave a cake to the cat that the girl saw  [0.5]
 subject extracted RCs:
-- main recipient --> RC agent # the boy gave a cake to the girl that found the cat [0.4]
-- main recipient --> RC theme # the boy gave a cake to the cat that rolled [0.05]
+    - main recipient --> RC agent # the boy gave a cake to the girl that found the cat [0.4]
+    - main recipient --> RC theme # the boy gave a cake to the cat that rolled [0.05]
 recipient extracted RCs:
-- main recipient -->  RC recipient # the boy gave a cake to the cat that was offered a donut [0.05]
+    - main recipient -->  RC recipient # the boy gave a cake to the cat that was offered a donut [0.05]
 ##}
 
 S! -> S_recipient_modif_main_dat_recipient_E{{ cnt.next() }}(NP_animate_nsubj_main, V_dat, NP_animate_iobj_RC_modified, NP_inanimate_dobj) [0.45]
