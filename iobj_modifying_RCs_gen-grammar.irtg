@@ -1,12 +1,13 @@
 {## Subsets of main grammar that only generate
-RC clauses that modify NP in recipient position
+RC clauses that modify NP in indirect object position
 object extracted RCs:
-    - main recipient --> RC theme # the boy gave a cake to the cat that the girl saw  [0.5]
+    - main recipient --> RC theme # the boy gave a cake to the cat that the girl saw _ [0.45]
 subject extracted RCs:
-    - main recipient --> RC agent # the boy gave a cake to the girl that found the cat [0.4]
-    - main recipient --> RC theme # the boy gave a cake to the cat that rolled [0.05]
+    - main recipient --> RC agent # the boy gave a cake to the girl that _ found the cat [0.4]
+    - main recipient --> RC theme # the boy gave a cake to the cat that _ rolled [0.05]
 recipient extracted RCs:
-    - main recipient -->  RC recipient # the boy gave a cake to the cat that was offered a donut [0.05]
+    - main recipient -->  RC pass recipient # the boy gave a cake to the cat that _ was offered a donut [0.05]
+    - main recipient -->  RC recipient # the boy gave a cake to the cat that Liam offered a donut to [0.05]
 ##}
 
 S! -> S_recipient_modif_main_dat_recipient_E{{ cnt.next() }}(NP_animate_nsubj_main, V_dat, NP_animate_iobj_RC_modified, NP_inanimate_dobj) [0.45]
@@ -37,10 +38,18 @@ NP_animate_nsubj_main -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
 [english] ?1
 [semantics] ?1
 
-{# indirect object extracted RCs #}
-NP_animate_iobj_RC_modified -> S_RC_recipient_iobj_extracted_E{{ cnt.next() }}(NP_animate_iobj_RC, Rel_pron, VP_RC_pass_recipient) [0.05]
+{# recipient extracted RCs #}
+NP_animate_iobj_RC_modified -> S_RC_recipient_recipient_extracted_E{{ cnt.next() }}(NP_animate_iobj_RC, Rel_pron, VP_RC_pass_recipient) [0.05]
+[english] *(*(?1, ?2),?3)
+[semantics] 'nmod<that>'(?1, pre_recipient(?3,?2))
+
+NP_animate_iobj_RC_modified -> S_RC_recipient_recipient_extracted_E{{ cnt.next() }}(NP_animate_iobj_RC, Rel_pron, VP_RC_recipient) [0.05]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, recipient(?3,?2))
+
+VP_RC_recipient -> r{{ cnt.next() }}(NP_animate_nsubj, V_dat, NP_inanimate_dobj, P_iobj) [1]
+[english] *(*(*(?1, ?2),?3),?4)
+[semantics] theme(agent(?2,?1),?3)
 
 VP_RC_pass_recipient -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj) [0.5]
 [english] *(*(?1, ?2),?3)
@@ -51,7 +60,7 @@ VP_RC_pass_recipient -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj, BY, 
 [semantics] agent(theme(?2,?3),?5)
 
 {# object extracted RCs #}
-NP_animate_iobj_RC_modified -> S_RC_theme_dobj_extracted_E{{ cnt.next() }}(NP_animate_iobj_RC, Rel_pron, VP_RC_theme) [0.5]
+NP_animate_iobj_RC_modified -> S_RC_theme_dobj_extracted_E{{ cnt.next() }}(NP_animate_iobj_RC, Rel_pron, VP_RC_theme) [0.45]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, theme(?3,?2))
 
@@ -74,7 +83,7 @@ VP_RC_theme -> r{{ cnt.next() }}(NP_animate_nsubj, V_trans_not_omissible) [0.34]
 {# subject extracted RCs #}
 NP_animate_iobj_RC_modified -> S_RC_agent_subj_extracted_E{{ cnt.next() }}(NP_animate_iobj_RC, Rel_pron, VP_RC_agent) [0.4]
 [english] *(*(?1, ?2),?3)
-[semantics] 'nmod<that>'(?1, agent(?3,?2))
+[semantics] 'nmod<that>'(?1, pre_agent(?3,?2))
 
 NP_animate_iobj_RC_modified -> S_RC_unacc_theme_subj_extracted_E{{ cnt.next() }}(NP_animate_iobj_RC, Rel_pron, VP_RC_unacc_theme) [0.05]
 [english] *(*(?1, ?2),?3)
