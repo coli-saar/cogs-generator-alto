@@ -46,7 +46,7 @@ VP_cp -> I_embedded_cp_V_F{{ cnt.next() }}(V_cp_taking, C, S!) [1]
 {# subject extracted RCs #}
 NP_animate_nsubj_main_RC_modified -> S_RC_agent_subj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_agent) [0.45]
 [english] *(*(?1, ?2),?3)
-[semantics] 'nmod<that>'(?1, agent(?3,?2))
+[semantics] 'nmod<that>'(?1, pre_agent(?3,?2))
 
 NP_animate_nsubj_main_RC_modified -> S_RC_unacc_theme_subj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_unacc_theme) [0.05]
 [english] *(*(?1, ?2),?3)
