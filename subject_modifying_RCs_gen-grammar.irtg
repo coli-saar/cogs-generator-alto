@@ -54,7 +54,7 @@ NP_animate_nsubj_main_RC_modified -> S_RC_unacc_theme_subj_extracted_E{{ cnt.nex
 
 NP_inanimate_nsubj_main_RC_modified -> r{{ cnt.next() }}(NP_inanimate_nsubj_main, Rel_pron, VP_RC_inanimate_subj_extracted_theme) [0.5]
 [english] *(*(?1, ?2),?3)
-[semantics] 'nmod<that>'(?1, theme(?3,?2))
+[semantics] 'nmod<that>'(?1, pre_theme(?3,?2))
 
 VP_RC_unacc_theme -> r{{ cnt.next() }}(V_unacc) [1]
 [english] ?1
@@ -151,9 +151,19 @@ NP_inanimate_nsubj_main_RC_modified -> S_RC_theme_dobj_extracted_E{{ cnt.next() 
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, theme(?3,?2))
 
-NP_inanimate_nsubj_main_RC_modified -> S_RC_dat_theme_dobj_extracted_E{{ cnt.next() }}(NP_inanimate_nsubj_main, Rel_pron, VP_dat_RC_theme) [0.2]
+NP_inanimate_nsubj_main_RC_modified -> S_RC_dat_theme_dobj_extracted_E{{ cnt.next() }}(NP_inanimate_nsubj_main, Rel_pron, VP_dat_RC_theme) [0.1]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, theme(?3,?2))
+
+NP_inanimate_nsubj_main_RC_modified -> S_RC_dat_theme_dobj_extracted_E{{ cnt.next() }}(NP_inanimate_nsubj_main, Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.1]
+[english] *(*(*(?1, ?2),?3),*(?4,?5))
+[semantics] 'nmod<that>'(?1, recipient(theme(agent(?4, ?3),?2),?5))
+{# replace the following rule with the previous: handle the extracted theme ordering issue (dat verbs)
+"cake that Emma sold __ to Liam ..."
+VP_dat_RC_theme -> r{{ cnt.next() }}(NP_animate_nsubj, V_dat, PP_iobj) [0.5]
+[english] *(*(?1, ?2), ?3)
+[semantics] recipient(pre_agent(?2, ?1),?3)
+#}
 
 NP_animate_nsubj_main -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [1]
 [english] *(?1, ?2)
@@ -175,11 +185,8 @@ VP_RC_object_extracted_theme -> r{{ cnt.next() }}(NP_animate_nsubj, V_trans_not_
 [english] *(?1, ?2)
 [semantics] agent(?2, ?1)
 
-VP_dat_RC_theme -> r{{ cnt.next() }}(NP_animate_nsubj, V_dat, PP_iobj) [0.5]
-[english] *(*(?1, ?2), ?3)
-[semantics] recipient(agent(?2, ?1),?3)
 
-VP_dat_RC_theme -> r{{ cnt.next() }}(NP_animate_nsubj, V_dat, NP_animate_iobj) [0.5]
+VP_dat_RC_theme -> r{{ cnt.next() }}(NP_animate_nsubj, V_dat, NP_animate_iobj) [1]
 [english] *(*(?1, ?2), ?3)
 [semantics] recipient(agent(?2, ?1),?3)
 
