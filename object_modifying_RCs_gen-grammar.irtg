@@ -94,7 +94,7 @@ NP_animate_nsubj_main -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
 {# subject extracted RCs #}
 NP_animate_dobj_RC_modified -> S_RC_agent_subj_extracted_E{{ cnt.next() }}(NP_animate_dobj_RC, Rel_pron, VP_RC_agent) [0.45]
 [english] *(*(?1, ?2),?3)
-[semantics] 'nmod<that>'(?1, agent(?3,?2))
+[semantics] 'nmod<that>'(?1, pre_agent(?3,?2))
 
 NP_animate_dobj_RC_modified -> S_RC_unacc_theme_subj_extracted_E{{ cnt.next() }}(NP_animate_dobj_RC, Rel_pron, VP_RC_unacc_theme) [0.05]
 [english] *(*(?1, ?2),?3)
@@ -107,7 +107,7 @@ NP_inanimate_dobj_RC_modified -> S_RC_unacc_theme_subj_extracted_E{{ cnt.next() 
 {# including V_dat passive forms #}
 NP_inanimate_dobj_RC_modified -> S_RC_pass_theme_subj_extracted_E{{ cnt.next() }}(NP_inanimate_dobj, Rel_pron, VP_RC_pass_theme) [0.45]
 [english] *(*(?1, ?2),?3)
-[semantics] 'nmod<that>'(?1, theme(?3,?2))
+[semantics] 'nmod<that>'(?1, pre_theme(?3,?2))
 
 VP_RC_unacc_theme -> r{{ cnt.next() }}(V_unacc) [1]
 [english] ?1
