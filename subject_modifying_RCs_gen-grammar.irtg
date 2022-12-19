@@ -92,7 +92,7 @@ VP_RC_agent -> r{{ cnt.next() }}(V_dat, NP_animate_iobj, NP_inanimate_dobj) [0.1
 [english] *(*(?1, ?2), ?3)
 [semantics] theme(recipient(?1, ?2), ?3)
 
-{# allows to generate CP instances in the case of RC modifying object:
+{# allows to generate CP instances in the case of RC modifying subject:
  - restrictions: no embedded RC modifier
  (e.g.  the boy that said that Emma froze a cat that slept smiled)
  cases allowed:
@@ -229,7 +229,6 @@ VP_main_inanim_subj -> S_main_pass_theme_E{{ cnt.next() }}(AUX, V_dat_pp, PP_iob
 [semantics] agent(recipient(?2,?3),?5)
 
 {# animate VP-main #}
-
 VP_main_anim_subj_pass_dat -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj) [0.5]
 [english] *(*(?1, ?2),?3)
 [semantics] theme(?2,?3)
