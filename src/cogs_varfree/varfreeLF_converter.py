@@ -7,23 +7,14 @@ import json
 import pandas as pd
 import sys
 
-"""
-varfree_lf_file = sys.argv[1]
-cogs_file = sys.argv[2]
 
-df_lf = pd.read_csv(varfree_lf_file,sep="\t",names=["sent","varfree_lf"])
-df_cogs = pd.read_csv(cogs_file,sep="\t",names=["sent","cogs_lf"])
-"""
-
-with open('verbs2lemmas.json') as lemma_file:
-    verbs_lemmas = json.load(lemma_file)
-with open('proper_nouns.json') as propN_file:
-    proper_nouns = json.load(propN_file)
 
 def parse_varfreeLF(lf):
     """parse variable free LF to extract parenthesized head/arguments pairs
-    @param lf: varfree lf
-    @return: ('head', 'label1,argument1, label2, argument2')
+    Args:
+     lf: varfree lf
+    Returns:
+        ('head', 'label1 = argument1, label2 = argument2')
     """
     stack = []
     heads = []
@@ -32,7 +23,7 @@ def parse_varfreeLF(lf):
         if c == '(':
             stack.append(i)
             level_i_lf = lf[previous_level_idx: i + 1]
-            # match all words before "("
+            # match the string before "("
             head = re.findall(r'\w+(?= \()', level_i_lf)
             previous_level_idx = i + 1
             heads.extend(head)
@@ -42,7 +33,7 @@ def parse_varfreeLF(lf):
             arg = lf[start + 1: i].strip()
             # PCRE pattern regex that splits the string based on commas outside all parenthesis
             arg_substring_list = [x for x in regex.split(r"(\((?:[^()]++|(?1))*\))(*SKIP)(*F)|,", arg) if x]
-            # match any chara ters as few as possible until a '(' is found, without '('
+            # match any characters as few as possible that are followed by an opening parenthesis
             pattern = '.+?(?=\()'
             match = [re.search(pattern,x).group(0).strip() if re.search(pattern,x) else x.strip() for x in arg_substring_list]
             arguments = ",".join(match)
@@ -50,78 +41,83 @@ def parse_varfreeLF(lf):
             yield (target_head, arguments)
 
 
-def varfree_lf_to_cogs(row):
+def varfree_lf_to_cogs(sent,lf):
     """Converts the given variable free logical form into COGS logical form.
-    don't consider the primitives
     - Nouns (entities and unaries):
         Jack --> Jack
         cat --> cat ( x _ i )
         * cat --> * cat ( x _ i )
-    - Verb functions with argument names become verb and argument roles
+    -  proper nouns
        eat ( agent = Jack ) --> eat . agent ( x _ 2 , Jack )
-    - The variables representing nouns:
+    - The variables representing common nouns:
         eat ( agent = cat ) --> cat ( x _ 1 ) AND eat . agent ( x _ 2 , x _ 1 )
-    This converter constructs a graph where variables are nodes and binaries
-    are edges. After identifying the root, it then performs depth-first traversal
-    to construct the output.
     Args:
-      {"sent": sentence string
-      "varfree_lf": variable free logical form string}
+      "sent": sentence string
+      "lf": variable free logical form string}
     Returns:
       The converted original cogs logical form.
     """
-    sent = row["sent"]
-    lf = row["varfree_lf"]
+
     tokens_list = sent.split()
-    nodes2var = dict() # # no duplicated verbs/nouns allowed
+    # primitives
+    if len(tokens_list) == 1:
+        cogs_lf = primitives_cogs_lf(tokens_list[0])
+        return cogs_lf
+
+    # nodes2var: dict mapping nodes to variables
+    nodes2var = dict() #no duplicated verbs/nouns allowed
+    v_list = []
     for idx, token in enumerate(tokens_list):
         if token in proper_nouns:
             nodes2var[token]=token
         elif token in verbs_lemmas.keys():
             nodes2var[verbs_lemmas[token]] = "x _ " + str(idx)
+            v_list.append(token)
         else:
             nodes2var[token] = "x _ " + str(idx)
+    if len(v_list)!=len(set(v_list)):
+        raise ValueError("sentence '%s' has duplicated verbs (%s)" % (sent, v_list) )
 
-    # `children` maps variables to a list of (edge name, target node).
+    # `children` maps head nodes to a list of (arg label, target node).
     head_arguments = set(parse_varfreeLF(lf))
-    children_dict = defaultdict(list)
-    ischild = set()
-    for head,args in head_arguments:
-        if "," in args:
-            args = args.split(",")
-            for child in args:
+    head2args = defaultdict(list)
+    isChild = set()
+    for head,args_str in head_arguments:
+        if "," in args_str:
+            args_str = args_str.split(",")
+            for child in args_str:
                 child = [e.strip() for e in child.split("=") ]
-                children_dict[head].append(child)
-                ischild.add(child[1])
+                head2args[head].append(child)
+                isChild.add(child[1])
         else:
-            child = [e.strip() for e in args.split("=")]
-            children_dict[head].append(child)
-            ischild.add(child[1])
+            child = [e.strip() for e in args_str.split("=")]
+            head2args[head].append(child)
+            isChild.add(child[1])
 
     defini_nouns = []
     main_lf = []
-    isdefinitive = False
-    isnondefini = False
+    isDefinite = False
+    isIndefinite = False
     for i,token in enumerate(sent.split()):
         if token in ("the","The"):
-            isdefinitive = True
+            isDefinite = True
             continue
-        elif token in ("a", "A"):
-            isnondefini = True
+        if token in ("a", "A"):
+            isIndefinite = True
             continue
 
-        if isdefinitive:
+        if isDefinite:
             defini_nouns.append("* " + token + " ( x _ " + str(i) + " )")
-            isdefinitive = False
-        elif isnondefini:
+            isDefinite = False
+        elif isIndefinite:
             main_lf.append(token + " ( x _ " + str(i) + " )" )
-            isnondefini = False
+            isIndefinite = False
 
         if token in verbs_lemmas.keys():
             token = verbs_lemmas[token]
 
-        if token in children_dict.keys():
-            for child in children_dict[token]:
+        if token in head2args.keys():
+            for child in head2args[token]:
                 sub_lf = token + " . " + child[0] + " ( x _ " + str(i) + " , " + nodes2var[child[1].strip("* ")] + " )"
                 main_lf.append(sub_lf)
 
@@ -130,16 +126,51 @@ def varfree_lf_to_cogs(row):
     else:
         return " AND ".join(main_lf)
 
-#row = {"sent":"A mouse in a cage liked that the cat on the table wanted to sneeze",
-#       "varfree_lf":"like ( agent = mouse ( nmod . in = cage ) , ccomp = want ( agent = * cat ( nmod . on = * table ) , xcomp = sneeze ( agent = * cat ( nmod . on = * table ) ) ) )"}
-#s = varfree_lf_to_cogs(row)
-#print(s)
 
-"""
-df_lf["converted_lf"] = df_lf.apply(varfree_lf_to_cogs,axis=1)
-df_lf["cogs_lf"] = df_cogs["cogs_lf"]
+with open('lexion/verbs2lemmas.json') as lemma_file:
+    verbs_lemmas = json.load(lemma_file)
+with open('lexion/proper_nouns.json') as propN_file:
+    proper_nouns = json.load(propN_file)
+with open('lexion/nouns.json') as file:
+    nouns = json.load(file)
+with open('lexion/V_trans.json') as file:
+    V_trans = json.load(file)
+with open('lexion/V_unacc.json') as file:
+    V_unacc = json.load(file)
+with open('lexion/V_unerg.json') as file:
+    V_unerg = json.load(file)
 
-df_lf["correct"] = df_lf["converted_lf"] == df_cogs["cogs_lf"]
-print(df_lf["correct"].value_counts())
-#df_lf[df_lf["correct"]==False].to_csv("convert_error.tsv",sep="\t", header=False)
-"""
+def primitives_cogs_lf(source):
+    template_noun = "{}".format("LAMBDA a . {w} ( a )")
+    template_proper_noun = "{}".format("{w}")
+    template_transitive_verb = "{}".format("LAMBDA a . LAMBDA b . LAMBDA e . {w} . agent ( e , b ) AND {w} . theme ( e , a )")
+    template_unaccusative_verb = "{}".format("LAMBDA a . LAMBDA e . {w} . theme ( e , a )")
+    template_unergative_verb = "{}".format("LAMBDA a . LAMBDA e . {w} . agent ( e , a )")
+    if source in nouns:
+        template = template_noun
+    elif source in proper_nouns:
+        template = template_proper_noun
+    elif source in V_unerg:
+        template = template_unergative_verb
+    elif source in V_unacc:
+        template = template_unaccusative_verb
+    elif source in V_trans:
+        template = template_transitive_verb
+    else:
+        raise ValueError("invalid source type: '%s' " % source)
+    cogs_lf = template.format(w = source)
+    return cogs_lf
+
+if __name__ == "__main__":
+
+  varfree_lf_file = sys.argv[1]
+  cogs_file = sys.argv[2]
+
+  df_varfree = pd.read_csv(varfree_lf_file, sep="\t", names=["sent", "varfree_lf"])
+  df_cogs = pd.read_csv(cogs_file, sep="\t", names=["sent", "cogs_lf"])
+  df_varfree["converted_lf"] = df_varfree.apply(lambda x: varfree_lf_to_cogs(x.sent, x.varfree_lf), axis=1)
+  df_varfree["cogs_lf"] = df_cogs["cogs_lf"]
+  exact_match = (df_varfree["converted_lf"] == df_varfree["cogs_lf"]).sum()
+  total_items = df_varfree.shape[0]
+  print(f"Exact match rate between converted LFs and original cogs LFs: {exact_match}/{total_items} ({exact_match / total_items:.2f})")
+
