@@ -255,10 +255,17 @@ Rel_pron -> r{{ cnt.next() }} [1]
 [english] that
 [semantics] that
 
-{# TODO - add rules #}
+WHO -> r{{ cnt.next() }} [1]
+[english] Who
+[semantics] Who
 
+WHAT -> r{{ cnt.next() }} [1]
+[english] What
+[semantics] What
 
-
+AUX_did -> r{{ cnt.next() }} [1]
+[english] did
+[semantics] did
 
 
 
@@ -272,11 +279,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
   'studied', 'examined', 'observed', 'knew', 'investigated'
 ] %}
 {% for word, prob in V_trans_omissible|zipf -%}
-{% for cat in ['V_trans_omissible'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_trans_omissible -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {% set V_trans_omissible_pp = [
   'eaten', 'painted', 'drawn', 'cleaned', 'cooked',
@@ -285,11 +291,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
   'studied', 'examined', 'observed', 'known', 'investigated'
 ] %}
 {% for word, prob in V_trans_omissible_pp|zipf -%}
-{% for cat in ['V_trans_omissible_pp'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_trans_omissible_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 
 
@@ -302,15 +307,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
 ] %}
 
 {% for word, prob in V_trans_not_omissible|zipf -%}
-{% for cat in ['V_trans_not_omissible'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_trans_not_omissible -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-
-{% endfor %}{% endfor %}
-
-
-
+{% endfor %}
 
 {% set V_trans_not_omissible_pp = [
   'liked', 'helped', 'found', 'loved', 'poked',
@@ -318,13 +318,29 @@ Rel_pron -> r{{ cnt.next() }} [1]
   'thrown', 'tolerated', 'valued', 'worshipped', 'discovered',
   'held', 'stabbed', 'touched', 'pierced', 'tossed'
 ] %}
-
 {% for word, prob in V_trans_not_omissible_pp|zipf -%}
-{% for cat in ['V_trans_not_omissible_pp'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_trans_not_omissible_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
+
+{# for questions formation dataset: V_trans_inf contains the infinitive forms of V_trans_not_omissible + V_trans_omissible + V_unacc #}
+{% set V_trans_inf = [
+    'adore', 'see', 'respect', 'poke', 'investigate', 'toss', 'love',
+     'pack', 'sketch', 'paint', 'miss', 'stab', 'worship', 'cook',
+     'study', 'find', 'hear', 'clean', 'appreciate', 'value', 'eat',
+     'observe', 'know', 'throw', 'admire', 'juggle', 'notice', 'call',
+     'pierce', 'help', 'hold', 'nurse', 'examine', 'draw', 'hunt',
+     'dust', 'like', 'discover', 'tolerate', 'touch', 'roll', 'freeze',
+     'burn', 'shorten', 'float', 'grow', 'slide', 'break', 'crumple',
+     'split', 'change', 'snap', 'disintegrate', 'collapse', 'decompose',
+     'double', 'improve', 'inflate', 'enlarge', 'redden'
+] %}
+{% for word in V_trans_inf -%}
+V_trans_inf -> r{{ cnt.next() }}
+[english] {{ word }}
+[semantics] {{ word }}
+{% endfor %}
 
 
 {# Levin 29.4 Declare verbs, Levin 30. Verbs of Perception, VerbNet admire-31.2, VerbNet wish-62 #}
@@ -335,11 +351,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
   'wished', 'dreamed', 'expected', 'imagined', 'meant'
 ] %}
 {% for word, prob in V_cp_taking|zipf -%}
-{% for cat in ['V_cp_taking'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_cp_taking -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {# VerbNet want-32.1, VerbNet try-61, VerbNet wish-62, VerbNet long-32.2, VerbNet admire-31.2-1 #}
 {% set V_inf_taking = [
@@ -350,11 +365,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
 ] %}
 
 {% for word, prob in V_inf_taking|zipf -%}
-{% for cat in ['V_inf_taking'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_inf_taking -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] "{{ verbs_lemmas[word] }}[agent=xcomp!agent]"
-{% endfor %}{% endfor %}
+{% endfor %}
 
 
 {# 1.1.2.1 Causative-Inchoative Alternation #}
@@ -365,11 +379,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
   'doubled', 'improved', 'inflated', 'enlarged', 'reddened',
 ] %}
 {% for word, prob in V_unacc|zipf -%}
-{% for cat in ['V_unacc'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_unacc -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {% set V_unacc_pp = [
   'rolled', 'frozen', 'burned', 'shortened', 'floated',
@@ -378,11 +391,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
   'doubled', 'improved', 'inflated', 'enlarged', 'reddened'
 ] %}
 {% for word, prob in V_unacc_pp|zipf -%}
-{% for cat in ['V_unacc_pp'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_unacc_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 
 {% set V_unerg = [
@@ -392,13 +404,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
   'giggled', 'scoffed', 'snored', 'smirked', 'gasped'
 ] %}
 {% for word, prob in V_unerg|zipf -%}
-{% for cat in ['V_unerg'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_unerg -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
-
-
+{% endfor %}
 
 
 {# 10 DO omissible transitives, 10 unergatives #}
@@ -410,11 +419,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
   'call', 'sketch', 'dust', 'clean', 'investigate'
 ] %}
 {% for word, prob in V_inf|zipf -%}
-{% for cat in ['V_inf'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_inf -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ word }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {% set V_dat = [
   'gave', 'lent', 'sold', 'offered', 'fed',
@@ -423,11 +431,10 @@ Rel_pron -> r{{ cnt.next() }} [1]
   'loaned', 'posted', 'returned', 'slipped', 'wired'
 ] %}
 {% for word, prob in V_dat|zipf -%}
-{% for cat in ['V_dat'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_dat -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
+{% endfor %}
 
 {% set V_dat_pp = [
   'given', 'lent', 'sold', 'offered', 'fed',
@@ -437,262 +444,7 @@ Rel_pron -> r{{ cnt.next() }} [1]
 ] %}
 
 {% for word, prob in V_dat_pp|zipf -%}
-{% for cat in ['V_dat_pp'] -%}
-{{ cat }} -> r{{ cnt.next() }} [{{ prob }}]
+V_dat_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
-{% endfor %}{% endfor %}
-
-{# verbs taking relative clauses #}
-
-{% for word, prob in V_trans_omissible|zipf -%}
-V_trans_omissible_theme_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_trans_omissible|zipf -%}
-V_trans_omissible_theme_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_trans_omissible|zipf -%}
-V_trans_omissible_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_unacc|zipf -%}
-V_unacc_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_unacc|zipf -%}
-V_unacc_theme_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_unacc|zipf -%}
-V_unacc_theme_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_unacc|zipf -%}
-V_unacc_agent_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_trans_not_omissible|zipf -%}
-V_trans_not_omissible_theme_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_trans_not_omissible|zipf -%}
-V_trans_not_omissible_theme_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_trans_not_omissible|zipf -%}
-V_trans_not_omissible_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_dat|zipf -%}
-V_dat_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_trans_not_omissible_pp|zipf -%}
-V_trans_not_omissible_pp_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_trans_not_omissible_pp|zipf -%}
-V_trans_not_omissible_pp_theme_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_trans_omissible_pp|zipf -%}
-V_trans_omissible_pp_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_trans_omissible_pp|zipf -%}
-V_trans_omissible_pp_theme_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_unacc_pp|zipf -%}
-V_unacc_pp_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_unacc_pp|zipf -%}
-V_unacc_pp_theme_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_dat_pp|zipf -%}
-V_dat_pp_theme_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_dat_pp|zipf -%}
-V_dat_pp_theme_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[theme=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_dat_pp|zipf -%}
-V_dat_pp_recipient_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[recipient=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_dat_pp|zipf -%}
-V_dat_pp_recipient_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[recipient=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_dat_pp|zipf -%}
-V_dat_pp_recipient_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[recipient=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_unerg|zipf -%}
-V_unerg_agent_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_unerg|zipf -%}
-V_unerg_agent_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_unerg|zipf -%}
-V_unerg_agent_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_unacc|zipf -%}
-V_unacc_agent_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_unacc|zipf -%}
-V_unacc_agent_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_trans_omissible|zipf -%}
-V_trans_omissible_agent_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_trans_omissible|zipf -%}
-V_trans_omissible_agent_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_trans_omissible|zipf -%}
-V_trans_omissible_agent_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_trans_not_omissible|zipf -%}
-V_trans_not_omissible_agent_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_trans_not_omissible|zipf -%}
-V_trans_not_omissible_agent_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_trans_not_omissible|zipf -%}
-V_trans_not_omissible_agent_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_cp_taking|zipf -%}
-V_cp_taking_agent_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_cp_taking|zipf -%}
-V_cp_taking_agent_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_cp_taking|zipf -%}
-V_cp_taking_agent_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_dat|zipf -%}
-V_dat_agent_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_dat|zipf -%}
-V_dat_agent_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_dat|zipf -%}
-V_dat_agent_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[agent=nmod!recipient]"
-{% endfor %}
-
-{% for word, prob in V_dat|zipf -%}
-V_dat_recipient_RC_agent -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[recipient=nmod!agent]"
-{% endfor %}
-
-{% for word, prob in V_dat|zipf -%}
-V_dat_recipient_RC_theme -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[recipient=nmod!theme]"
-{% endfor %}
-
-{% for word, prob in V_dat|zipf -%}
-V_dat_recipient_RC_recipient -> r{{ cnt.next() }} [{{ prob }}]
-[english] {{ word }}
-[semantics] "{{ verbs_lemmas[word] }}[recipient=nmod!recipient]"
 {% endfor %}

@@ -1,0 +1,51 @@
+{# wh-question main grammar only generates questions with simple transitive verbs (V_trans + V_unaccu)
+ - Who saw the dog ?
+ - Who did the boy see ?
+ - What did the boy roll ?
+ #}
+
+
+S! -> r{{ cnt.next() }}(WHO, VP) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_agent(?2, ?1)
+
+S! -> r{{ cnt.next() }}(WHO, AUX_did, NP_animate_nsubj, V_trans_inf) [0.25]
+[english] *(*(?1, ?2),*(?3,?4))
+[semantics] theme(pre_agent(?4, ?3),?1)
+
+S! -> r{{ cnt.next() }}(WHAT, AUX_did, NP_animate_nsubj, V_trans_inf) [0.25]
+[english] *(*(?1, ?2),*(?3,?4))
+[semantics] theme(pre_agent(?4, ?3),?1)
+
+
+VP -> r{{ cnt.next() }}(V_unacc, NP_dobj) [0.33]
+[english] *(?1, ?2)
+[semantics] theme(?1, ?2)
+
+VP -> r{{ cnt.next() }}(V_trans_omissible, NP_dobj) [0.33]
+[english] *(?1, ?2)
+[semantics] theme(?1, ?2)
+
+VP -> r{{ cnt.next() }}(V_trans_not_omissible, NP_dobj) [0.34]
+[english] *(?1, ?2)
+[semantics] theme(?1, ?2)
+
+NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
+[english] ?1
+[semantics] ?1
+
+NP_dobj -> r{{ cnt.next() }}(Det, N_common_inanimate_dobj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_dobj -> r{{ cnt.next() }}(Det, N_common_animate_dobj) [0.25]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_dobj -> r{{ cnt.next() }}(N_prop_dobj) [0.25]
+[english] ?1
+[semantics] ?1
