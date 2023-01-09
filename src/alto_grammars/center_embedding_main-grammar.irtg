@@ -26,11 +26,11 @@ NP_dobj -> r{{ cnt.next() }}(NP_animate_dobj_with_modifier) [0.5]
 [english] ?1
 [semantics] ?1
 
-NP_inanimate_dobj_with_modifier -> r{{ cnt.next() }}(Det, N_common_inanimate_dobj, Rel_pron, VP_embedded_RC) [1]
+NP_inanimate_dobj_with_modifier -> S_embedded_E{{ cnt.next() }}(Det, N_common_inanimate_dobj, Rel_pron, VP_embedded_RC) [1]
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), theme(?4,?3))
 
-NP_animate_dobj_with_modifier -> r{{ cnt.next() }}(Det, N_common_animate_dobj, Rel_pron, VP_embedded_RC) [1]
+NP_animate_dobj_with_modifier -> S_embedded_E{{ cnt.next() }}(Det, N_common_animate_dobj, Rel_pron, VP_embedded_RC) [1]
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), theme(?4,?3))
 
@@ -46,11 +46,15 @@ VP_embedded_RC -> r{{ cnt.next() }}(NP_animate_nsubj, V_trans_not_omissible) [0.
 [english] *(?1, ?2)
 [semantics] agent(?2, ?1)
 
-NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.25]
+NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.1]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
-NP_animate_nsubj -> I_objRC_modif_subj_F{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_embedded_RC) [0.75]
+NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.1]
+[english] ?1
+[semantics] ?1
+
+NP_animate_nsubj -> S_embedded_E{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_embedded_RC) [0.8]
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), theme(?4,?3))
 
