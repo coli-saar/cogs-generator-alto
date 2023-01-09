@@ -5,15 +5,15 @@
  #}
 
 
-S! -> r{{ cnt.next() }}(WHO, VP) [0.5]
+S! -> r{{ cnt.next() }}(WHO, VP) [0.4]
 [english] *(?1, ?2)
 [semantics] pre_agent(?2, ?1)
 
-S! -> r{{ cnt.next() }}(WHO, AUX_did, NP_animate_nsubj, V_trans_inf) [0.25]
+S! -> r{{ cnt.next() }}(WHO, AUX_did, NP_animate_nsubj, V_trans_inf) [0.2]
 [english] *(*(?1, ?2),*(?3,?4))
 [semantics] theme(pre_agent(?4, ?3),?1)
 
-S! -> r{{ cnt.next() }}(WHAT, AUX_did, NP_animate_nsubj, V_trans_inf) [0.25]
+S! -> r{{ cnt.next() }}(WHAT, AUX_did, NP_animate_nsubj, V_trans_inf) [0.4]
 [english] *(*(?1, ?2),*(?3,?4))
 [semantics] theme(pre_agent(?4, ?3),?1)
 
@@ -29,6 +29,19 @@ VP -> r{{ cnt.next() }}(V_trans_omissible, NP_dobj) [0.33]
 VP -> r{{ cnt.next() }}(V_trans_not_omissible, NP_dobj) [0.34]
 [english] *(?1, ?2)
 [semantics] theme(?1, ?2)
+
+V_trans_inf -> r{{ cnt.next() }}(V_unacc_inf) [0.33]
+[english] ?1
+[semantics] ?1
+
+V_trans_inf -> r{{ cnt.next() }}(V_trans_omissible_inf) [0.33]
+[english] ?1
+[semantics] ?1
+
+V_trans_inf -> r{{ cnt.next() }}(V_trans_not_omissible_inf) [0.34]
+[english] ?1
+[semantics] ?1
+
 
 NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
 [english] *(?1, ?2)

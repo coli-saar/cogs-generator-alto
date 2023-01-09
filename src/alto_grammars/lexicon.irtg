@@ -19,7 +19,7 @@
   'thought':'think', 'supported':'support', 'wished':'wish', 'dreamed':'dream',
   'expected':'expect', 'imagined':'imagine', 'envied':'envy', 'wanted':'want',
   'preferred':'prefer', 'needed':'need', 'intended':'intend', 'tried':'try',
-  'attempted':'attempt', 'planned':'plan','craved':'crave','hated':'hate','loved':'love',
+  'attempted':'attempt', 'planned':'plan','craved':'crave','hated':'hate',
   'enjoyed':'enjoy', 'rolled':'roll', 'froze':'freeze', 'burned':'burn', 'shortened':'shorten',
   'floated':'float', 'grew':'grow', 'slid':'slide', 'broke':'break', 'crumpled':'crumple',
   'split':'split', 'changed':'change', 'snapped':'snap', 'tore':'tear', 'collapsed':'collapse',
@@ -284,6 +284,13 @@ V_trans_omissible -> r{{ cnt.next() }} [{{ prob }}]
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
 
+{% for word, prob in V_trans_omissible|zipf -%}
+V_trans_omissible_inf -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ verbs_lemmas[word] }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}
+
+
 {% set V_trans_omissible_pp = [
   'eaten', 'painted', 'drawn', 'cleaned', 'cooked',
   'dusted', 'hunted', 'nursed', 'sketched', 'juggled',
@@ -312,6 +319,12 @@ V_trans_not_omissible -> r{{ cnt.next() }} [{{ prob }}]
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
 
+{% for word, prob in V_trans_not_omissible|zipf -%}
+V_trans_not_omissible_inf -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ verbs_lemmas[word] }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}
+
 {% set V_trans_not_omissible_pp = [
   'liked', 'helped', 'found', 'loved', 'poked',
   'admired', 'adored', 'appreciated', 'missed', 'respected',
@@ -324,25 +337,6 @@ V_trans_not_omissible_pp -> r{{ cnt.next() }} [{{ prob }}]
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
 
-{# for questions formation dataset: V_trans_inf contains the infinitive forms of V_trans_not_omissible + V_trans_omissible + V_unacc #}
-{% set V_trans_inf = [
-    'adore', 'see', 'respect', 'poke', 'investigate', 'toss', 'love',
-     'pack', 'sketch', 'paint', 'miss', 'stab', 'worship', 'cook',
-     'study', 'find', 'hear', 'clean', 'appreciate', 'value', 'eat',
-     'observe', 'know', 'throw', 'admire', 'juggle', 'notice', 'call',
-     'pierce', 'help', 'hold', 'nurse', 'examine', 'draw', 'hunt',
-     'dust', 'like', 'discover', 'tolerate', 'touch', 'roll', 'freeze',
-     'burn', 'shorten', 'float', 'grow', 'slide', 'break', 'crumple',
-     'split', 'change', 'snap', 'disintegrate', 'collapse', 'decompose',
-     'double', 'improve', 'inflate', 'enlarge', 'redden'
-] %}
-{% for word in V_trans_inf -%}
-V_trans_inf -> r{{ cnt.next() }}
-[english] {{ word }}
-[semantics] {{ word }}
-{% endfor %}
-
-
 {# Levin 29.4 Declare verbs, Levin 30. Verbs of Perception, VerbNet admire-31.2, VerbNet wish-62 #}
 {% set V_cp_taking = [
   'liked', 'hoped', 'said', 'noticed', 'believed',
@@ -353,6 +347,12 @@ V_trans_inf -> r{{ cnt.next() }}
 {% for word, prob in V_cp_taking|zipf -%}
 V_cp_taking -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}
+
+{% for word, prob in V_cp_taking|zipf -%}
+V_cp_taking_inf -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ verbs_lemmas[word] }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
 
@@ -383,6 +383,13 @@ V_unacc -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
+
+{% for word, prob in V_unacc|zipf -%}
+V_unacc_inf -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ verbs_lemmas[word] }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}
+
 
 {% set V_unacc_pp = [
   'rolled', 'frozen', 'burned', 'shortened', 'floated',
@@ -446,5 +453,11 @@ V_dat -> r{{ cnt.next() }} [{{ prob }}]
 {% for word, prob in V_dat_pp|zipf -%}
 V_dat_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
+[semantics] {{ verbs_lemmas[word] }}
+{% endfor %}
+
+{% for word, prob in V_dat|zipf -%}
+V_dat_inf -> r{{ cnt.next() }} [{{ prob }}]
+[english] {{ verbs_lemmas[word] }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
