@@ -33,7 +33,7 @@ S! -> r{{ cnt.next() }}(NP_animate_nsubj, VP_cp) [0.1]
 [english] *(?1, ?2)
 [semantics] pre_agent(?2, ?1)
 
-VP_cp -> I_main_cp_V_F{{ cnt.next() }}(V_cp_taking, C, S!) [1]
+VP_cp -> I_cp_embedded_RC_F{{ cnt.next() }}(V_cp_taking, C, S!) [1]
 [english] *(?1, *(?2, ?3))
 [semantics] ccomp(?1, ?3)
 

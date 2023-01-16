@@ -1,12 +1,12 @@
 {## Subsets of main grammar that only generate
 recipient-extracted clauses that modify NP in both object and subject position
 object position NP:
-    - main theme --> RC recipient # the boy found the guy that was given a cake by Emma/ that Emma gave a cake to [0.45]
+    - main theme --> RC recipient #  N_obj that Emma gave a cake to [0.45]
 subject position NP:
-    - main agent --> RC recipient # the boy that was given a cake found the cat [0.36]
-    - main unaccusative theme --> RC recipient # the cat that was given a cake rolled [0.04]
-    - main passive recipient --> RC recipient # the cat that was sold a cake was offered a donut [0.05]
-embedded RC allowed: Emma said that the boy that was given a cake found the cat [0.1]
+    - main agent --> RC recipient # the boy that Emma gave a cake to found the cat [0.36]
+    - main unaccusative theme --> RC recipient # the cat that Emma gave a cake to rolled [0.04]
+    - main passive recipient --> RC recipient # the cat that Emma gave a cake to was offered a donut [0.05]
+embedded RC allowed: Emma said that the boy that Emma gave a cake to found the cat [0.1]
 ##}
 
 
@@ -19,7 +19,7 @@ S! -> r{{ cnt.next() }}(NP_animate_nsubj, VP_cp) [0.1]
 [english] *(?1, ?2)
 [semantics] pre_agent(?2, ?1)
 
-VP_cp -> I_embedded_cp_V_F{{ cnt.next() }}(V_cp_taking, C, S!) [1]
+VP_cp -> I_cp_embedded_RC_F{{ cnt.next() }}(V_cp_taking, C, S!) [1]
 [english] *(?1, *(?2, ?3))
 [semantics] ccomp(?1, ?3)
 
@@ -36,19 +36,11 @@ S! -> S_subj_modif_main_pass_recipient_E{{ cnt.next() }}(NP_animate_nsubj_main_R
 [english] *(?1, ?2)
 [semantics] pre_recipient(?2, ?1)
 
-NP_animate_nsubj_main_RC_modified -> S_RC_pass_recipient_iobj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_pass_recipient) [0.5]
-[english] *(*(?1, ?2),?3)
-[semantics] 'nmod<that>'(?1, pre_recipient(?3,?2))
-
-NP_animate_nsubj_main_RC_modified -> S_RC_recipient_iobj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_recipient) [0.5]
+NP_animate_nsubj_main_RC_modified -> S_RC_recipient_iobj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_recipient) [1]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, recipient(?3,?2))
 
-NP_animate_dobj_RC_modified -> S_RC_pass_recipient_iobj_extracted_E{{ cnt.next() }}(NP_animate_dobj_RC, Rel_pron, VP_RC_pass_recipient) [0.5]
-[english] *(*(?1, ?2),?3)
-[semantics] 'nmod<that>'(?1, pre_recipient(?3,?2))
-
-NP_animate_dobj_RC_modified -> S_RC_recipient_iobj_extracted_E{{ cnt.next() }}(NP_animate_dobj_RC, Rel_pron, VP_RC_recipient) [0.5]
+NP_animate_dobj_RC_modified -> S_RC_recipient_iobj_extracted_E{{ cnt.next() }}(NP_animate_dobj_RC, Rel_pron, VP_RC_recipient) [1]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, recipient(?3,?2))
 
@@ -130,10 +122,11 @@ VP_main_anim_subj -> r{{ cnt.next() }}(V_dat, NP_animate_iobj, NP_inanimate_dobj
 [semantics] theme(recipient(?1, ?2), ?3)
 
 {# allows to generate sents like:
-the boy that was given a cake said that the girl smiled
-the boy that was given a cake said that sth V-passive
-the boy that was given a cake believed that the girl said that the guy smiled
-- restriction: one RC modifying subject per sentence (e.g. the boy that was given a cake believed that the girl that ate a donut smiled)
+the boy that Emma gave a cake to said that the girl smiled
+the boy that Emma gave a cake to said that sth V-passive
+the boy that Emma gave a cake to believed that the girl said that the guy smiled
+- not allowed:
+   RC modified NP > 1 (e.g. the boy that Emma gave a cake to believed that the girl that ate a donut smiled)
 #}
 
 VP_main_anim_subj -> I_main_cp_V_F{{ cnt.next() }}(V_cp_taking, C, S_internal) [0.158]
@@ -157,9 +150,11 @@ S_internal -> r{{ cnt.next() }}(NP_animate_nsubjpass, VP_passive_dat) [0.075]
 [english] *(?1, ?2)
 [semantics] pre_recipient(?2, ?1)
 
+
 VP_external -> r{{ cnt.next() }}(V_cp_taking, C, S_internal) [0.158]
 [english] *(?1, *(?2, ?3))
 [semantics] ccomp(?1, ?3)
+
 
 VP_external -> r{{ cnt.next() }}(V_unerg) [0.10525]
 [english] ?1
@@ -208,7 +203,7 @@ NP_dobj -> r{{ cnt.next() }}(NP_animate_dobj) [0.5]
 [english] ?1
 [semantics] ?1
 
-NP_unacc_subj  -> r{{ cnt.next() }}(Det, N_common_animate_dobj) [1]
+NP_unacc_subj -> r{{ cnt.next() }}(Det, N_common_animate_dobj) [1]
 [english] *(?1, ?2)
 [semantics] pre_det(?2, ?1)
 
