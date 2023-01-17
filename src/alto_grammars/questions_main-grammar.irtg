@@ -4,16 +4,15 @@
  - What did the boy roll ?
  #}
 
-
-S! -> r{{ cnt.next() }}(WHO, VP) [0.4]
-[english] *(?1, ?2)
-[semantics] pre_agent(?2, ?1)
-
-S! -> r{{ cnt.next() }}(WHO, AUX_did, NP_animate_nsubj, V_trans_inf) [0.2]
+S! -> S_What_dobj_E{{ cnt.next() }}(WHAT, AUX_did, NP_animate_nsubj, V_trans_inf) [0.5]
 [english] *(*(?1, ?2),*(?3,?4))
 [semantics] theme(pre_agent(?4, ?3),?1)
 
-S! -> r{{ cnt.next() }}(WHAT, AUX_did, NP_animate_nsubj, V_trans_inf) [0.4]
+S! -> S_Who_VP_E{{ cnt.next() }}(WHO, VP) [0.25]
+[english] *(?1, ?2)
+[semantics] pre_agent(?2, ?1)
+
+S! -> S_Who_dobj_E{{ cnt.next() }}(WHO, AUX_did, NP_animate_nsubj, V_trans_inf) [0.25]
 [english] *(*(?1, ?2),*(?3,?4))
 [semantics] theme(pre_agent(?4, ?3),?1)
 
