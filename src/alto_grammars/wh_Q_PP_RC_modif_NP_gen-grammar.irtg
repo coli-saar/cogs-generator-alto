@@ -168,7 +168,7 @@ NP_inanimate_dobj_with_modifier -> S_modif_objRC_inanim_dobj_theme_E{{ cnt.next(
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), theme(?4,?3))
 
-NP_inanimate_dobj_with_modifier -> S_RC_dat_theme_dobj_extracted_E{{ cnt.next() }}(NP_inanimate_dobj, Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.05]
+NP_inanimate_dobj_with_modifier -> S_modif_objRC_inanim_dobj_theme_E{{ cnt.next() }}(NP_inanimate_dobj, Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.05]
 [english] *(*(*(?1, ?2),?3),*(?4,?5))
 [semantics] 'nmod<that>'(?1, recipient(theme(agent(?4, ?3),?2),?5))
 {# replace by the above rule to solve argument odering issue
