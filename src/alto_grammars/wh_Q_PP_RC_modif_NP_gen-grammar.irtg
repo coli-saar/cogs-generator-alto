@@ -118,11 +118,11 @@ NP_animate_nsubj_with_modifier -> S_modif_subjRC_subj_unacc_theme_E{{ cnt.next()
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), theme(?4,?3))
 
-NP_animate_nsubj_with_modifier -> S_modif_subjRC_modif_subj_agent_E{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_RC_agent) [0.15]
+NP_animate_nsubj_with_modifier -> S_modif_subjRC_subj_agent_E{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_RC_agent) [0.15]
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), pre_agent(?4,?3))
 
-NP_animate_nsubj_with_modifier -> S_modif_subjRC_modif_subj_recipient_E{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_RC_pass_recipient) [0.05]
+NP_animate_nsubj_with_modifier -> S_modif_subjRC_subj_recipient_E{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_RC_pass_recipient) [0.05]
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), pre_recipient(?4,?3))
 
@@ -154,7 +154,7 @@ NP_animate_dobj_with_modifier -> S_modif_subjRC_anim_dobj_agent_E{{ cnt.next() }
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), pre_agent(?4,?3))
 
-NP_animate_dobj_with_modifier -> S_modif_subjRC_modif_dobj_recipient_E{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_RC_pass_recipient) [0.05]
+NP_animate_dobj_with_modifier -> S_modif_subjRC_dobj_recipient_E{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_RC_pass_recipient) [0.05]
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), pre_recipient(?4,?3))
 
@@ -206,7 +206,7 @@ NP_animate_iobj_with_modifier -> S_modif_subjRC_iobj_agent_E{{ cnt.next() }}(Det
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), pre_agent(?4,?3))
 
-NP_animate_iobj_with_modifier -> S_modif_subjRC_modif_iobj_recipient_E{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_RC_pass_recipient) [0.05]
+NP_animate_iobj_with_modifier -> S_modif_subjRC_iobj_recipient_E{{ cnt.next() }}(Det, N_common_animate_nsubj, Rel_pron, VP_RC_pass_recipient) [0.05]
 [english] *(*(*(?1, ?2), ?3),?4)
 [semantics] 'nmod<that>'(pre_det(?2,?1), pre_recipient(?4,?3))
 
