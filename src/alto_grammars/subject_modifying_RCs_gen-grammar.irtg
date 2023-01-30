@@ -8,6 +8,7 @@ object extracted:
     - main passive theme (inanimate) (+dat) --> RC theme # the cake that David gave to Emma was given to David burned
 subject extracted:
     - main agent --> RC agent   # the boy that saw the man smiled
+    - main agent --> RC recipient # the boy that was given a cake slept
     - main agent --> RC unaccusative theme # the boy that saw the man rolled a cake
     - main pass recipient --> RC agent # the boy that saw the man was given a cake
     - main pass recipient --> RC unaccusative theme # the boy that rolled was given a cake
@@ -44,7 +45,7 @@ VP_cp -> I_embedded_cp_V_F{{ cnt.next() }}(V_cp_taking, C, S!) [1]
 [semantics] ccomp(?1, ?3)
 
 {# subject extracted RCs #}
-NP_animate_nsubj_main_RC_modified -> S_RC_agent_subj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_agent) [0.45]
+NP_animate_nsubj_main_RC_modified -> S_RC_agent_subj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_agent) [0.35]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, pre_agent(?3,?2))
 
@@ -52,9 +53,22 @@ NP_animate_nsubj_main_RC_modified -> S_RC_unacc_theme_subj_extracted_E{{ cnt.nex
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, theme(?3,?2))
 
+NP_animate_nsubj_main_RC_modified -> S_RC_pass_recipient_subj_extracted_E{{ cnt.next() }}(NP_animate_nsubj_main, Rel_pron, VP_RC_pass_recipient) [0.1]
+[english] *(*(?1, ?2),?3)
+[semantics] 'nmod<that>'(?1, pre_recipient(?3,?2))
+
 NP_inanimate_nsubj_main_RC_modified -> r{{ cnt.next() }}(NP_inanimate_nsubj_main, Rel_pron, VP_RC_inanimate_subj_extracted_theme) [0.5]
 [english] *(*(?1, ?2),?3)
 [semantics] 'nmod<that>'(?1, pre_theme(?3,?2))
+
+
+VP_RC_pass_recipient -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj) [0.5]
+[english] *(*(?1, ?2),?3)
+[semantics] theme(?2,?3)
+
+VP_RC_pass_recipient -> r{{ cnt.next() }}(AUX, V_dat_pp, NP_inanimate_dobj, BY, NP_animate_nsubj) [0.5]
+[english] *(*(*(?1, ?2),?3),*(?4,?5))
+[semantics] agent(theme(?2,?3),?5)
 
 VP_RC_unacc_theme -> r{{ cnt.next() }}(V_unacc) [1]
 [english] ?1
