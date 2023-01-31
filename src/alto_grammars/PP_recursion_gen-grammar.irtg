@@ -1,4 +1,4 @@
-{# From Najoung's grammar: grammar with high PP probability, for CP recursion depth 3 #}
+{# From Najoung's grammar: grammar with high PP probability, for PP recursion depth 3,5-12 #}
 
 {## Sentences and verb phrases ##}
 S! -> r{{ cnt.next() }}(NP_animate_nsubj, VP_external) [0.9]
