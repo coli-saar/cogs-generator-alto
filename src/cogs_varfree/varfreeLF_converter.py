@@ -70,6 +70,8 @@ def varfree_lf_to_cogs(sent,lf):
     for idx, token in enumerate(tokens_list):
         if token in proper_nouns:
             nodes2var[token]=token
+        elif token in ["Who","What"]:
+            nodes2var[token] = "?"
         elif token in verbs_lemmas.keys():
             nodes2var[verbs_lemmas[token]] = "x _ " + str(idx)
             v_list.append(token)
@@ -80,6 +82,7 @@ def varfree_lf_to_cogs(sent,lf):
 
     # `children` maps head nodes to a list of (arg label, target node).
     head_arguments = set(parse_varfreeLF(lf))
+
     head2args = defaultdict(list)
     isChild = set()
     for head,args_str in head_arguments:
@@ -127,17 +130,17 @@ def varfree_lf_to_cogs(sent,lf):
         return " AND ".join(main_lf)
 
 
-with open('lexion/verbs2lemmas.json') as lemma_file:
+with open('lexicon/verbs2lemmas.json') as lemma_file:
     verbs_lemmas = json.load(lemma_file)
-with open('lexion/proper_nouns.json') as propN_file:
+with open('lexicon/proper_nouns.json') as propN_file:
     proper_nouns = json.load(propN_file)
-with open('lexion/nouns.json') as file:
+with open('lexicon/nouns.json') as file:
     nouns = json.load(file)
-with open('lexion/V_trans.json') as file:
+with open('lexicon/V_trans.json') as file:
     V_trans = json.load(file)
-with open('lexion/V_unacc.json') as file:
+with open('lexicon/V_unacc.json') as file:
     V_unacc = json.load(file)
-with open('lexion/V_unerg.json') as file:
+with open('lexicon/V_unerg.json') as file:
     V_unerg = json.load(file)
 
 def primitives_cogs_lf(source):
@@ -160,6 +163,8 @@ def primitives_cogs_lf(source):
         raise ValueError("invalid source type: '%s' " % source)
     cogs_lf = template.format(w = source)
     return cogs_lf
+
+
 
 if __name__ == "__main__":
 
