@@ -270,8 +270,6 @@ P_iobj -> r{{ cnt.next() }} [1]
 Rel_pron -> r{{ cnt.next() }} [1]
 [english] that
 [semantics] that
-<<<<<<< HEAD:lexicon.irtg
-=======
 
 WHO -> r{{ cnt.next() }} [1]
 [english] Who
@@ -284,8 +282,6 @@ WHAT -> r{{ cnt.next() }} [1]
 AUX_did -> r{{ cnt.next() }} [1]
 [english] did
 [semantics] did
-
->>>>>>> COGS-2:src/alto_grammars/lexicon.irtg
 
 
 {# Levin, '1.2.1 Unspecified Object Alternation'
@@ -302,16 +298,12 @@ V_trans_omissible -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
-<<<<<<< HEAD:lexicon.irtg
-=======
 
 {% for word, prob in V_trans_omissible|zipf -%}
 V_trans_omissible_inf -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ verbs_lemmas[word] }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
-
->>>>>>> COGS-2:src/alto_grammars/lexicon.irtg
 
 {% set V_trans_omissible_pp = [
   'eaten', 'painted', 'drawn', 'cleaned', 'cooked',
@@ -341,14 +333,11 @@ V_trans_not_omissible -> r{{ cnt.next() }} [{{ prob }}]
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
 
-<<<<<<< HEAD:lexicon.irtg
-=======
 {% for word, prob in V_trans_not_omissible|zipf -%}
 V_trans_not_omissible_inf -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ verbs_lemmas[word] }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
->>>>>>> COGS-2:src/alto_grammars/lexicon.irtg
 
 {% set V_trans_not_omissible_pp = [
   'liked', 'helped', 'found', 'loved', 'poked',
@@ -361,10 +350,6 @@ V_trans_not_omissible_pp -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
-<<<<<<< HEAD:lexicon.irtg
-
-=======
->>>>>>> COGS-2:src/alto_grammars/lexicon.irtg
 
 {# Levin 29.4 Declare verbs, Levin 30. Verbs of Perception, VerbNet admire-31.2, VerbNet wish-62 #}
 {% set V_cp_taking = [
@@ -378,15 +363,12 @@ V_cp_taking -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
-<<<<<<< HEAD:lexicon.irtg
-=======
 
 {% for word, prob in V_cp_taking|zipf -%}
 V_cp_taking_inf -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ verbs_lemmas[word] }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
->>>>>>> COGS-2:src/alto_grammars/lexicon.irtg
 
 {# VerbNet want-32.1, VerbNet try-61, VerbNet wish-62, VerbNet long-32.2, VerbNet admire-31.2-1 #}
 {% set V_inf_taking = [
@@ -415,16 +397,12 @@ V_unacc -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ word }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
-<<<<<<< HEAD:lexicon.irtg
-=======
 
 {% for word, prob in V_unacc|zipf -%}
 V_unacc_inf -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ verbs_lemmas[word] }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
-
->>>>>>> COGS-2:src/alto_grammars/lexicon.irtg
 
 {% set V_unacc_pp = [
   'rolled', 'frozen', 'burned', 'shortened', 'floated',
@@ -491,10 +469,9 @@ V_dat_pp -> r{{ cnt.next() }} [{{ prob }}]
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
 
-
 {% for word, prob in V_dat|zipf -%}
 V_dat_inf -> r{{ cnt.next() }} [{{ prob }}]
 [english] {{ verbs_lemmas[word] }}
 [semantics] {{ verbs_lemmas[word] }}
 {% endfor %}
->>>>>>> COGS-2:src/alto_grammars/lexicon.irtg
+
