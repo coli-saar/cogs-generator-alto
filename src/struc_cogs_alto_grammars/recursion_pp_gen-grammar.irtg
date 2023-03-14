@@ -25,11 +25,11 @@ VP_external -> r{{ cnt.next() }}(V_trans_not_omissible, NP_dobj) [0.2]
 [english] *(?1, ?2)
 [semantics] theme(?1, ?2)
 
-VP_external -> r{{ cnt.next() }}(V_dat, NP_inanimate_dobj, PP_iobj) [0.2] 
+VP_external -> I_dobj_before_iobj_F{{ cnt.next() }}(V_dat, NP_inanimate_dobj, PP_iobj) [0.2]
 [english] *(*(?1, ?2), ?3)
 [semantics] recipient(theme(?1, ?2), ?3)
 
-VP_external -> r{{ cnt.next() }}(V_dat, NP_animate_iobj, NP_inanimate_dobj) [0.2] 
+VP_external -> I_dobj_after_iobj_F{{ cnt.next() }}(V_dat, NP_animate_iobj, NP_inanimate_dobj) [0.2]
 [english] *(*(?1, ?2), ?3)
 [semantics] theme(recipient(?1, ?2), ?3)
 
