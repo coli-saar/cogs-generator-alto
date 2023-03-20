@@ -1,0 +1,77 @@
+{## Subsets of main grammar that only generate
+object-extracted and subject clauses that modify NP in object position
+object position NP:
+    - main theme -->object RC  #  N_obj that Emma gave to the cat [0.45]
+embedded RC allowed: Emma said that Liam saw the boy that Emma gave a cake to  [0.1]
+##}
+
+
+
+S! -> r{{ cnt.next() }}(NP_animate_nsubj, V_main, NP_inanimate_dobj_RC_modified) [0.9]
+[english] *(*(?1, ?2),?3)
+[semantics] theme(pre_agent(?2, ?1),?3)
+
+S! -> r{{ cnt.next() }}(NP_animate_nsubj, VP_cp) [0.1]
+[english] *(?1, ?2)
+[semantics] pre_agent(?2, ?1)
+
+VP_cp -> I_cp_embedded_RC_F{{ cnt.next() }}(V_cp_taking, C, S!) [1]
+[english] *(?1, *(?2, ?3))
+[semantics] ccomp(?1, ?3)
+
+V_main -> r{{ cnt.next() }}(V_unacc) [0.33]
+[english] ?1
+[semantics] ?1
+
+V_main -> r{{ cnt.next() }}(V_trans_omissible) [0.33]
+[english] ?1
+[semantics] ?1
+
+V_main -> r{{ cnt.next() }}(V_trans_not_omissible) [0.34]
+[english] ?1
+[semantics] ?1
+
+{# direct object extraced RC with ditransitive verbs#}
+NP_inanimate_dobj_RC_modified -> S_RC_doubleObj_dobj_extracted_E{{ cnt.next() }}(NP_inanimate_dobj, Rel_pron, VP_dat_RC_theme) [0.5]
+[english] *(*(?1, ?2),?3)
+[semantics] 'nmod<that>'(?1, theme(?3,?2))
+
+
+VP_dat_RC_theme -> r{{ cnt.next() }}(NP_animate_nsubj, V_dat, NP_animate_iobj) [1]
+[english] *(*(?1, ?2), ?3)
+[semantics] recipient(agent(?2, ?1),?3)
+
+NP_inanimate_dobj_RC_modified -> S_RC_datPP_dobj_extracted_E{{ cnt.next() }}(NP_inanimate_dobj, Rel_pron, NP_animate_nsubj, V_dat, PP_iobj) [0.5]
+[english] *(*(*(?1, ?2),?3),*(?4,?5))
+[semantics] 'nmod<that>'(?1, recipient(theme(agent(?4, ?3),?2),?5))
+{# replace the following rule with the previous: handle the extracted theme ordering issue (dat verbs)
+"cake that Emma sold __ to Liam ..."
+VP_dat_RC_theme -> r{{ cnt.next() }}(NP_animate_nsubj, V_dat, PP_iobj) [0.5]
+[english] *(*(?1, ?2), ?3)
+[semantics] recipient(pre_agent(?2, ?1),?3)
+#}
+
+
+NP_animate_nsubj -> r{{ cnt.next() }}(N_prop_nsubj) [0.5]
+[english] ?1
+[semantics] ?1
+
+NP_animate_nsubj -> r{{ cnt.next() }}(Det, N_common_animate_nsubj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_inanimate_dobj -> r{{ cnt.next() }}(Det, N_common_inanimate_dobj) [1]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_iobj -> r{{ cnt.next() }}(Det, N_common_animate_iobj) [0.5]
+[english] *(?1, ?2)
+[semantics] pre_det(?2, ?1)
+
+NP_animate_iobj -> r{{ cnt.next() }}(N_prop_iobj) [0.5]
+[english] ?1
+[semantics] ?1
+
+PP_iobj -> r{{ cnt.next() }} (P_iobj,NP_animate_iobj)[1]
+[english] *(?1, ?2)
+[semantics] pre_case(?2, ?1)
