@@ -27,6 +27,7 @@ def parse_varfreeLF(lf):
             head = re.findall(r'\w+(?= \()', level_i_lf)
             previous_level_idx = i + 1
             heads.extend(head)
+            #breakpoint()
 
         elif c == ')' and stack:
             start = stack.pop()
@@ -38,9 +39,8 @@ def parse_varfreeLF(lf):
             match = [re.search(pattern,x).group(0).strip() if re.search(pattern,x) else x.strip() for x in arg_substring_list]
             arguments = ",".join(match)
             target_head = heads.pop()
+            #breakpoint()
             yield (target_head, arguments)
-
-
 def varfree_lf_to_cogs(sent,lf):
     """Converts the given variable free logical form into COGS logical form.
     - Nouns (entities and unaries):
@@ -77,12 +77,12 @@ def varfree_lf_to_cogs(sent,lf):
             v_list.append(token)
         else:
             nodes2var[token] = "x _ " + str(idx)
-    if len(v_list)!=len(set(v_list)):
-        raise ValueError("sentence '%s' has duplicated verbs (%s)" % (sent, v_list) )
+    #if len(v_list)!=len(set(v_list)):
+    #    raise ValueError("sentence '%s' has duplicated verbs (%s)" % (sent, v_list) )
 
     # `children` maps head nodes to a list of (arg label, target node).
     head_arguments = set(parse_varfreeLF(lf))
-
+    #breakpoint()
     head2args = defaultdict(list)
     isChild = set()
     for head,args_str in head_arguments:
@@ -96,7 +96,7 @@ def varfree_lf_to_cogs(sent,lf):
             child = [e.strip() for e in args_str.split("=")]
             head2args[head].append(child)
             isChild.add(child[1])
-
+    #breakpoint()
     defini_nouns = []
     main_lf = []
     isDefinite = False
@@ -118,7 +118,7 @@ def varfree_lf_to_cogs(sent,lf):
 
         if token in verbs_lemmas.keys():
             token = verbs_lemmas[token]
-
+        #breakpoint()
         if token in head2args.keys():
             for child in head2args[token]:
                 sub_lf = token + " . " + child[0] + " ( x _ " + str(i) + " , " + nodes2var[child[1].strip("* ")] + " )"
@@ -164,18 +164,28 @@ def primitives_cogs_lf(source):
     cogs_lf = template.format(w = source)
     return cogs_lf
 
+#sent = "Emma bought the cake that the student that the woman that William liked saw baked "
+#cogs_wrong = "* girl ( x _ 4 ) ; * rose ( x _ 7 ) ; hope . agent ( x _ 1 , Emma ) AND hope . ccomp ( x _ 1 , x _ 10 ) AND give . theme ( x _ 5 , x _ 7 ) AND give . recipient ( x _ 5 , x _ 13 ) AND give . agent ( x _ 5 , x _ 16 ) AND give . agent ( x _ 5 , x _ 4 ) AND give . theme ( x _ 5 , x _ 7 ) AND give . recipient ( x _ 5 , Olivia ) AND rose . nmod ( x _ 7 , x _ 10 ) AND give . theme ( x _ 10 , x _ 7 ) AND give . recipient ( x _ 10 , x _ 13 ) AND give . agent ( x _ 10 , x _ 16 ) AND give . agent ( x _ 10 , x _ 4 ) AND give . theme ( x _ 10 , x _ 7 ) AND give . recipient ( x _ 10 , Olivia ) AND father ( x _ 13 ) AND chicken ( x _ 16 )"
+#lf = "buy ( agent = Emma , theme = * cake ( nmod = bake ( agent = * student ( nmod = see ( agent = * woman ( nmod =like ( agent = William , theme = * woman ) ) , theme = * student ) ) , theme = * cake ) ) )"
+#sent = "The cat that froze smiled ."
+#lf = " smile ( agent = * cat ( nmod = freeze ( theme = * cat ) ) )"
+sent3 = "A child valued that the butterfly liked that a mirror was liked by Liam ."
+cogsLF3 = "* butterfly ( x _ 5 ) ; child ( x _ 1 ) AND value . agent ( x _ 2 , x _ 1 ) AND value . ccomp ( x _ 2 , x _ 6 ) AND like . agent ( x _ 6 , x _ 5 ) AND like . ccomp ( x _ 6 , x _ 11 ) AND mirror ( x _ 9 ) AND like . theme ( x _ 11 , x _ 9 ) AND like . agent ( x _ 11 , Liam )"
+varfreeLF3 = "value ( agent = child , ccomp = like ( agent = * butterfly , ccomp = like ( theme = mirror , agent = Liam ) ) )"
 
 
-if __name__ == "__main__":
+
+
+"""if __name__ == "__main__":
 
   varfree_lf_file = sys.argv[1]
   cogs_file = sys.argv[2]
 
-  df_varfree = pd.read_csv(varfree_lf_file, sep="\t", names=["sent", "varfree_lf"])
-  df_cogs = pd.read_csv(cogs_file, sep="\t", names=["sent", "cogs_lf"])
+  df_varfree = pd.read_csv(varfree_lf_file, sep="\t", names=["sent", "varfree_lf","type"])
+  df_cogs = pd.read_csv(cogs_file, sep="\t", names=["sent", "cogs_lf","type"])
   df_varfree["converted_lf"] = df_varfree.apply(lambda x: varfree_lf_to_cogs(x.sent, x.varfree_lf), axis=1)
   df_varfree["cogs_lf"] = df_cogs["cogs_lf"]
   exact_match = (df_varfree["converted_lf"] == df_varfree["cogs_lf"]).sum()
   total_items = df_varfree.shape[0]
   print(f"Exact match rate between converted LFs and original cogs LFs: {exact_match}/{total_items} ({exact_match / total_items:.2f})")
-
+"""
