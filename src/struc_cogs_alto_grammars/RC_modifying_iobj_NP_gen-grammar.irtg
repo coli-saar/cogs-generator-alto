@@ -1,13 +1,13 @@
 {## Subsets of main grammar that only generate
-RC clauses that modify NP in indirect object position
+RC clauses modifying NP in indirect object position
 object extracted RCs:
     - main recipient --> RC theme # the boy gave a cake to the cat that the girl saw _ [0.45]
-    - passive recipient --> RC theme
+    - passive recipient --> RC theme # the cake was given to the boy that the girl saw _
 subject extracted RCs:
     - main recipient --> RC agent # the boy gave a cake to the girl that _ found the cat [0.35]
     - main recipient --> RC theme # the boy gave a cake to the cat that _ rolled [0.05]
     - main recipient -->  RC pass recipient # the boy gave a cake to the cat that _ was offered a donut [0.05]
-    - the cake was given to the cat that was offered a donut
+    - passive recipient --> RC pass recipient the cake was given to the cat that was offered a donut
 ##}
 
 
@@ -26,7 +26,6 @@ VP_external_includ_iobj -> S_iobj_after_dobj_E{{ cnt.next() }}( V_dat, NP_inanim
 VP_external_includ_iobj -> S_iobj_before_dobj_E{{ cnt.next() }}( V_dat, NP_animate_iobj_RC_modified, NP_inanimate_dobj) [0.45]
 [english] *(*(?1, ?2), ?3)
 [semantics] theme(recipient(?1, ?2), ?3)
-
 
 VP_external_includ_iobj -> I_cp_embedded_PP_F{{ cnt.next() }}(V_cp_taking, C, S!) [0.1]
 [english] *(?1, *(?2, ?3))
@@ -137,8 +136,8 @@ VP_RC_agent -> r{{ cnt.next() }}(V_dat, NP_animate_iobj, NP_inanimate_dobj) [0.1
 {# allows to generate CP instances in the case of RC modifying the indirect object:
  - restrictions:
  CP clause as relative clause does not contain embedded CP or RC
- no embedded RC modifier: Emma gave a cake to the boy that said that the guy that cleaned smiled
- no embedded CP inside RC clause: Emma gave a cake to the boy that said that the girl believed that Emma smiled.
+ no embedded RC modifier: Emma gave a cake to the boy that said that the guy (that cleaned) smiled
+ no embedded CP inside RC clause: Emma gave a cake to the boy that said that (the girl believed that) Emma smiled.
  - cases allowed:
  Emma gave a cake to the boy that [_ said that Emma froze a cat]
   #}
