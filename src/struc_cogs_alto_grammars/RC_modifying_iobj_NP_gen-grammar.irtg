@@ -32,13 +32,13 @@ VP_external_includ_iobj -> I_cp_embedded_PP_F{{ cnt.next() }}(V_cp_taking, C, S!
 [semantics] ccomp(?1, ?3)
 
 
-VP_passive_RC_modified -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj_RC_modified) [0.5]
+VP_passive_RC_modified -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj_RC_modified) [1]
 [english] *(*(?1, ?2),?3)
 [semantics] recipient(?2,?3)
-
+{# dobj RC can end with 'by phrase', ambiguous attachment
 VP_passive_RC_modified -> r{{ cnt.next() }}(AUX, V_dat_pp, PP_iobj_RC_modified, BY, NP_animate_nsubj) [0.5]
 [english] *(*(*(?1, ?2),?3),*(?4,?5))
-[semantics] agent(recipient(?2,?3),?5)
+[semantics] agent(recipient(?2,?3),?5)#}
 
 PP_iobj_RC_modified -> r{{ cnt.next() }} (P_iobj, NP_animate_iobj_RC_modified)[1]
 [english] *(?1, ?2)
