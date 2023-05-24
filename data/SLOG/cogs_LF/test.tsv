@@ -4044,4 +4044,3 @@ What did the boy clean ?	* boy ( x _ 3 ) ; clean . agent ( x _ 4 , x _ 3 ) AND c
 The donut was passed to the girl by Emma .	* donut ( x _ 1 ) ; * girl ( x _ 6 ) ; pass . theme ( x _ 3 , x _ 1 ) AND pass . recipient ( x _ 3 , x _ 6 ) AND pass . agent ( x _ 3 , Emma )	in_distribution
 The girl knew Liam .	* girl ( x _ 1 ) ; know . agent ( x _ 2 , x _ 1 ) AND know . theme ( x _ 2 , Liam )	in_distribution
 Emma gave a sheep a sandwich .	give . agent ( x _ 1 , Emma ) AND give . recipient ( x _ 1 , x _ 3 ) AND give . theme ( x _ 1 , x _ 5 ) AND sheep ( x _ 3 ) AND sandwich ( x _ 5 )	in_distribution
-What did Ryan paint ?	paint . agent ( x _ 3 , Ryan ) AND paint . theme ( x _ 3 , ? )	wh_Q_simple_trans

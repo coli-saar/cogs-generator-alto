@@ -4044,4 +4044,3 @@ What did the boy clean ?	clean ( agent = * boy , theme = ? )	wh_Q_simple_trans
 The donut was passed to the girl by Emma .	pass ( theme = * donut , recipient = * girl , agent = Emma )	in_distribution
 The girl knew Liam .	know ( agent = * girl , theme = Liam )	in_distribution
 Emma gave a sheep a sandwich .	give ( agent = Emma , recipient = sheep , theme = sandwich )	in_distribution
-What did Ryan paint ?	paint ( agent = Ryan , theme = ? )	wh_Q_simple_trans

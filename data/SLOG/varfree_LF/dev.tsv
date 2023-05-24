@@ -4043,3 +4043,4 @@ A game was eaten by a boy .	eat ( theme = game , agent = boy )	in_distribution
 A plate was disintegrated .	disintegrate ( theme = plate )	in_distribution
 The cake was fed to Isabella by a boy .	feed ( theme = * cake , recipient = Isabella , agent = boy )	in_distribution
 Who did Elizabeth eat ?	eat ( agent = Elizabeth , theme = ? )	wh_Q_simple_trans
+What did Ryan paint ?	paint ( agent = Ryan , theme = ? )	wh_Q_simple_trans

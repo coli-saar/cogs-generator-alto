@@ -4043,3 +4043,4 @@ A game was eaten by a boy .	game ( x _ 1 ) AND eat . theme ( x _ 3 , x _ 1 ) AND
 A plate was disintegrated .	plate ( x _ 1 ) AND disintegrate . theme ( x _ 3 , x _ 1 )	in_distribution
 The cake was fed to Isabella by a boy .	* cake ( x _ 1 ) ; feed . theme ( x _ 3 , x _ 1 ) AND feed . recipient ( x _ 3 , Isabella ) AND feed . agent ( x _ 3 , x _ 8 ) AND boy ( x _ 8 )	in_distribution
 Who did Elizabeth eat ?	eat . agent ( x _ 3 , Elizabeth ) AND eat . theme ( x _ 3 , ? )	wh_Q_simple_trans
+What did Ryan paint ?	paint . agent ( x _ 3 , Ryan ) AND paint . theme ( x _ 3 , ? )	wh_Q_simple_trans
